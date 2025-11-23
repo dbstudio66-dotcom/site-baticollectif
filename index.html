@@ -571,27 +571,28 @@
                 <p class="text-stone-500 text-lg">Remplissez ce formulaire unique. Il sera transmis instantanément aux artisans concernés.</p>
             </div>
 
-            <form class="space-y-6 reveal delay-100 bg-white p-8 md:p-10 rounded-3xl border border-stone-200 shadow-xl shadow-stone-200/50">
+            <form action="https://formspree.io/f/xblbvzdd" method="POST" id="contact-form" class="space-y-6 reveal delay-100 bg-white p-8 md:p-10 rounded-3xl border border-stone-200 shadow-xl shadow-stone-200/50">
                 <div class="grid grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-stone-700">Nom</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white" placeholder="Votre nom">
+                        <input type="text" name="nom" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white" placeholder="Votre nom">
                     </div>
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-stone-700">Téléphone</label>
-                        <input type="tel" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white" placeholder="06 .. .. .. ..">
+                        <input type="tel" name="telephone" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white" placeholder="06 .. .. .. ..">
                     </div>
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-bold text-stone-700">Détails</label>
-                    <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white resize-none" placeholder="Décrivez votre besoin..."></textarea>
+                    <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white resize-none" placeholder="Décrivez votre besoin..."></textarea>
                 </div>
-                <button type="submit" class="w-full py-4 px-6 bg-stone-900 hover:bg-warmgreen-600 text-white rounded-xl font-bold text-lg transition-all transform active:scale-[0.98] shadow-lg flex items-center justify-center gap-3 group">
-                    Envoyer ma demande
+                <button type="submit" id="submit-btn" class="w-full py-4 px-6 bg-stone-900 hover:bg-warmgreen-600 text-white rounded-xl font-bold text-lg transition-all transform active:scale-[0.98] shadow-lg flex items-center justify-center gap-3 group">
+                    <span>Envoyer ma demande</span>
                     <i data-lucide="send" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                 </button>
+                <p id="form-status" class="text-center text-sm font-bold hidden"></p>
             </form>
-        </div>
+            </div>
     </section>
 
     <footer class="bg-stone-50 border-t border-stone-200 pt-16 pb-8">
@@ -657,19 +658,78 @@
         function openLightbox(src) {
             lightboxImg.src = src;
             lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Empêche le scroll
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Réactive le scroll
-            setTimeout(() => { lightboxImg.src = ''; }, 300); // Vide la src après animation
+            document.body.style.overflow = 'auto'; 
+            setTimeout(() => { lightboxImg.src = ''; }, 300); 
         }
 
-        // Fermeture avec touche Echap
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
         });
+
+        /* --- SCRIPT FORMSPREE AJAX (ENVOI SANS REDIRECTION) --- */
+        const form = document.getElementById("contact-form");
+    
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const status = document.getElementById("form-status");
+            const btn = document.getElementById("submit-btn");
+            const btnText = btn.querySelector('span');
+            const data = new FormData(event.target);
+
+            btn.disabled = true;
+            const originalText = btnText.innerText;
+            btnText.innerText = "Envoi en cours...";
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // SUCCÈS
+                    status.innerHTML = "Merci ! Votre message a bien été envoyé aux artisans.";
+                    status.className = "text-center text-sm font-bold text-warmgreen-600 mt-4 block";
+                    form.reset();
+                    
+                    btnText.innerText = "Envoyé !";
+                    btn.classList.remove('bg-stone-900');
+                    btn.classList.add('bg-warmgreen-600');
+                    
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btnText.innerText = originalText;
+                        btn.classList.add('bg-stone-900');
+                        btn.classList.remove('bg-warmgreen-600');
+                        status.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    // ERREUR
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "Oups ! Il y a eu un problème lors de l'envoi.";
+                        }
+                        status.className = "text-center text-sm font-bold text-red-600 mt-4 block";
+                        btn.disabled = false;
+                        btnText.innerText = originalText;
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = "Erreur de connexion. Réessayez plus tard.";
+                status.className = "text-center text-sm font-bold text-red-600 mt-4 block";
+                btn.disabled = false;
+                btnText.innerText = originalText;
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
