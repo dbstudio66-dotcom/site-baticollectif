@@ -184,9 +184,10 @@
         }
         .window:nth-child(3) { left: 60px; }
 
+        /* SOLEIL REMONTÉ (top: 5%) */
         .sun {
             position: absolute;
-            top: 15%; right: 25%;
+            top: 5%; right: 25%;
             width: 100px; height: 100px;
             background: #facc15;
             border-radius: 50%;
@@ -198,6 +199,7 @@
         .hover-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .hover-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1); }
 
+        .logo-container img { width: 100%; height: 100%; object-fit: contain; padding: 1rem; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -217,6 +219,11 @@
             -webkit-line-clamp: 6;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+        
+        /* Overlay Contact */
+        .contact-overlay {
+            transition: opacity 0.3s ease;
         }
     </style>
 </head>
@@ -433,79 +440,124 @@
             <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mb-8 reveal">L'Équipe Locale</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
-                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal">
+                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                        <i data-lucide="hammer" class="w-12 h-12 text-stone-400"></i>
+                        <img src="logo-macon.jpg" alt="Logo Renov Style" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
-                            Gros Œuvre
+                            Maçonnerie
+                        </div>
+                        
+                        <div class="contact-overlay absolute inset-0 bg-warmgreen-600/95 backdrop-blur-sm flex flex-col items-center justify-center gap-3 opacity-0 pointer-events-none transition-opacity duration-300">
+                             <a href="tel:0603652961" class="px-4 py-2 bg-white text-warmgreen-700 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                                <i data-lucide="phone" class="w-4 h-4"></i> 06 03 65 29 61
+                             </a>
+                             <a href="https://www.renov-style-machet-maxime.fr/" target="_blank" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                                <i data-lucide="globe" class="w-4 h-4"></i> Site Web
+                             </a>
                         </div>
                     </div>
                     <div class="px-3 pb-2">
-                        <h3 class="font-display font-bold text-lg text-stone-900">Maxime Machet</h3>
-                        <p class="text-sm text-stone-500 mb-2">20 ans d'expérience</p>
+                        <h3 class="font-display font-bold text-lg text-stone-900 group-hover:text-warmgreen-600 transition-colors">Maxime Machet</h3>
+                        <p class="text-sm text-stone-500 mb-2">Renovation & maçonnerie</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Rivesaltes
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-100">
+                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-100" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                        <i data-lucide="wrench" class="w-12 h-12 text-stone-400"></i>
+                        <img src="logo-plomberie.jpg" alt="Logo Joseph Gamiz" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Plomberie
                         </div>
+
+                        <div class="contact-overlay absolute inset-0 bg-warmgreen-600/95 backdrop-blur-sm flex flex-col items-center justify-center gap-3 opacity-0 pointer-events-none transition-opacity duration-300">
+                             <a href="tel:0625818616" class="px-4 py-2 bg-white text-warmgreen-700 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                                <i data-lucide="phone" class="w-4 h-4"></i> 06 25 81 86 16
+                             </a>
+                        </div>
                     </div>
                     <div class="px-3 pb-2">
-                        <h3 class="font-display font-bold text-lg text-stone-900">Joseph Gamiz</h3>
-                        <p class="text-sm text-stone-500 mb-2">Spécialiste SDB</p>
+                        <h3 class="font-display font-bold text-lg text-stone-900 group-hover:text-warmgreen-600 transition-colors">Joseph Gamiz</h3>
+                        <p class="text-sm text-stone-500 mb-2">Plombier</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Canet
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-200">
+                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-200" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-800 text-white">
-                         <i data-lucide="zap" class="w-12 h-12"></i>
+                         <img src="logo-elec.jpg" alt="Logo DVE" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Électricité
                         </div>
+
+                        <div class="contact-overlay absolute inset-0 bg-warmgreen-600/95 backdrop-blur-sm flex flex-col items-center justify-center gap-3 opacity-0 pointer-events-none transition-opacity duration-300">
+                             <a href="tel:0617097472" class="px-4 py-2 bg-white text-warmgreen-700 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                                <i data-lucide="phone" class="w-4 h-4"></i> 06 17 09 74 72
+                             </a>
+                             <a href="https://www.electricite-sarl-dve.fr/" target="_blank" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                                <i data-lucide="globe" class="w-4 h-4"></i> Site Web
+                             </a>
+                        </div>
                     </div>
                     <div class="px-3 pb-2">
-                        <h3 class="font-display font-bold text-lg text-stone-900">Sébastien V.</h3>
-                        <p class="text-sm text-stone-500 mb-2">Domotique & Vidéo</p>
+                        <h3 class="font-display font-bold text-lg text-stone-900 group-hover:text-warmgreen-600 transition-colors">Sébastien Verquin</h3>
+                        <p class="text-sm text-stone-500 mb-2">Electricien</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i> Toulouges
+                            <i data-lucide="map-pin" class="w-3 h-3"></i> Bages
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-300">
+                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-300" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                         <i data-lucide="paint-brush" class="w-12 h-12 text-stone-400"></i>
+                         <img src="logo-peinture.jpg" alt="Logo Breijo" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Finition & Déco
                         </div>
+
+                        <div class="contact-overlay absolute inset-0 bg-warmgreen-600/95 backdrop-blur-sm flex flex-col items-center justify-center gap-3 opacity-0 pointer-events-none transition-opacity duration-300">
+                             <a href="tel:0614593901" class="px-4 py-2 bg-white text-warmgreen-700 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                                <i data-lucide="phone" class="w-4 h-4"></i> 06 14 59 39 01
+                             </a>
+                             <a href="https://www.breijopeinture.fr/" target="_blank" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                                <i data-lucide="globe" class="w-4 h-4"></i> Site Web
+                             </a>
+                        </div>
                     </div>
                     <div class="px-3 pb-2">
-                        <h3 class="font-display font-bold text-lg text-stone-900">José Breijo</h3>
-                        <p class="text-sm text-stone-500 mb-2">Peinture & Sols</p>
+                        <h3 class="font-display font-bold text-lg text-stone-900 group-hover:text-warmgreen-600 transition-colors">José Breijo</h3>
+                        <p class="text-sm text-stone-500 mb-2">Peintres & sols & finitions</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i> Perpignan
+                            <i data-lucide="map-pin" class="w-3 h-3"></i> Villeneuve de la Raho
                         </div>
                     </div>
                 </div>
 
-                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-400">
+                <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-400" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                         <i data-lucide="ruler" class="w-12 h-12 text-stone-400"></i>
+                         <img src="logo-archi.jpg" alt="Logo Des 2 Mains" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Conception
                         </div>
+
+                        <div class="contact-overlay absolute inset-0 bg-warmgreen-600/95 backdrop-blur-sm flex flex-col items-center justify-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300">
+                             <a href="tel:0679728835" class="px-4 py-1.5 bg-white text-warmgreen-700 rounded-full font-bold text-xs hover:scale-105 transition-transform flex items-center gap-2 shadow-lg w-max">
+                                <i data-lucide="phone" class="w-3 h-3"></i> Cécilia : 06 79 72 88 35
+                             </a>
+                             <a href="tel:0683563784" class="px-4 py-1.5 bg-white text-warmgreen-700 rounded-full font-bold text-xs hover:scale-105 transition-transform flex items-center gap-2 shadow-lg w-max">
+                                <i data-lucide="phone" class="w-3 h-3"></i> David : 06 83 56 37 84
+                             </a>
+                             <a href="https://architecte-interieur-perpignan.com/des-2-mains/" target="_blank" class="px-4 py-1.5 bg-stone-900 text-white rounded-full font-bold text-xs hover:scale-105 transition-transform flex items-center gap-2 shadow-lg mt-1">
+                                <i data-lucide="globe" class="w-3 h-3"></i> Site Web
+                             </a>
+                        </div>
                     </div>
                     <div class="px-3 pb-2">
-                        <h3 class="font-display font-bold text-lg text-stone-900">Cécilia Trinh</h3>
+                        <h3 class="font-display font-bold text-lg text-stone-900 group-hover:text-warmgreen-600 transition-colors">Cécilia Trinh</h3>
                         <p class="text-sm text-stone-500 mb-2">Architecte d'intérieur</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Perpignan
@@ -522,11 +574,11 @@
             <div class="space-y-16">
                 <div class="reveal">
                     <div class="grid md:grid-cols-3 gap-6 items-start">
-                        <div class="md:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('https://placehold.co/1200x800/333/eee?text=Appart+Hotel+Termine')">
-                            <img src="https://placehold.co/1200x800/333/eee?text=Appart+Hotel+Termine" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="md:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('projet1.jpg')">
+                            <img src="projet1.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full pointer-events-none">
-                                <h3 class="font-display text-2xl font-bold">Rénovation Appart-Hôtels</h3>
-                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Perpignan Centre</p>
+                                <h3 class="font-display text-2xl font-bold">Appart-Hôtels à Collioure</h3>
+                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Collioure</p>
                             </div>
                         </div>
                         <div class="flex flex-col h-full justify-between gap-4">
@@ -537,12 +589,13 @@
                                 </p>
                                 <div class="mt-4 pt-4 border-t border-stone-700">
                                     <p class="text-xs text-stone-500 uppercase">Budget</p>
-                                    <p class="font-bold text-white">50k€ - 70k€</p>
+                                    <p class="font-bold text-white">80 000€ / appart</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 overflow-x-auto pb-2 hide-scrollbar snap-x">
-                                <img src="https://placehold.co/400x400/444/aaa?text=Travaux" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
-                                <img src="https://placehold.co/400x400/444/aaa?text=Details" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
+                                <img src="projet1.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="projet2.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="projet3.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
                             </div>
                         </div>
                     </div>
@@ -550,27 +603,28 @@
 
                 <div class="reveal delay-100">
                     <div class="grid md:grid-cols-3 gap-6 items-start">
-                         <div class="md:col-span-2 md:order-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('https://placehold.co/1200x800/333/eee?text=Maison+Individuelle+Terminee')">
-                            <img src="https://placehold.co/1200x800/333/eee?text=Maison+Individuelle+Terminee" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                         <div class="md:col-span-2 md:order-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('EXEMPLES PROJETS REELS.jpg')">
+                            <img src="EXEMPLES PROJETS REELS.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full pointer-events-none">
-                                <h3 class="font-display text-2xl font-bold">Rénovation & Extension</h3>
-                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Saint-Estève</p>
+                                <h3 class="font-display text-2xl font-bold">Rénovation complète Maison</h3>
+                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Perpignan</p>
                             </div>
                         </div>
                         <div class="flex flex-col h-full justify-between gap-4 md:order-1">
                             <div class="p-6 bg-stone-800 rounded-2xl border border-stone-700">
                                 <h4 class="font-bold mb-2 text-white">Le projet</h4>
                                 <p class="text-sm text-stone-400 leading-relaxed">
-                                    Ouverture d'un mur porteur, rénovation totale électricité et création d'une suite parentale.
+                                    Rénovation complète d'une maison avec création d'un nouvel étage sous combe.
                                 </p>
                                 <div class="mt-4 pt-4 border-t border-stone-700">
-                                    <p class="text-xs text-stone-500 uppercase">Durée</p>
-                                    <p class="font-bold text-white">3 mois</p>
+                                    <p class="text-xs text-stone-500 uppercase">Budget</p>
+                                    <p class="font-bold text-white">130 000€</p>
                                 </div>
                             </div>
                              <div class="flex gap-3 overflow-x-auto pb-2 hide-scrollbar snap-x">
-                                <img src="https://placehold.co/400x400/444/aaa?text=Avant" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
-                                <img src="https://placehold.co/400x400/444/aaa?text=Pendant" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
+                                <img src="avantapres1.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="avantapres2.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="avantapres3.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
                             </div>
                         </div>
                     </div>
@@ -848,8 +902,15 @@
             } else {
                 textElement.classList.add('line-clamp-6');
                 btn.innerText = "Lire l'avis complet";
-                // Optionnel : remonter vers le début de l'avis si on réduit
-                // textElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        /* --- Artisan Card Click Interaction --- */
+        function toggleContact(card) {
+            const overlay = card.querySelector('.contact-overlay');
+            if(overlay) {
+                overlay.classList.toggle('opacity-0');
+                overlay.classList.toggle('pointer-events-none');
             }
         }
 
