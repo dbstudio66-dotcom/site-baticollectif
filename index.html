@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BâtiCollectif 66 – Artisans Réunis à Perpignan</title>
-    <meta name="description" content="Le groupement d'artisans locaux pour vos travaux dans les Pyrénées-Orientales. Rénovation, construction et aménagement sans intermédiaire.">
-    
+
+    <title>BâtiCollectif 66 – Artisans Réunis à Perpignan (Prix Directs)</title>
+    <meta name="description" content="Le groupement d'artisans locaux pour vos travaux dans les Pyrénées-Orientales. Rénovation sans intermédiaire, coordination incluse et prix directs artisans.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "BâtiCollectif 66",
+      "telephone": "+33679728835",
+      "description": "Collectif d'artisans indépendants pour la rénovation sans intermédiaire.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Perpignan",
+        "postalCode": "66000",
+        "addressCountry": "FR"
+      }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -23,9 +40,6 @@
                     },
                     colors: {
                         stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 800: '#292524', 900: '#1c1917' },
-                        sage: { 50: '#f2fbf5', 100: '#e1f7e7', 500: '#4ade80', 600: '#16a34a', 700: '#3f6251', 800: '#324e41' },
-                        terracotta: { 500: '#d97757', 600: '#c05f3f', 700: '#9a442d' },
-                        sky: { 600: '#0284c7' },
                         warmgreen: { 
                             50: '#F7FCEB', 100: '#EEF8D5', 200: '#DBF1AF', 300: '#C7EB88',
                             400: '#AEDE5C', 500: '#95C538', 600: '#7FA82C', 700: '#6A8B22',
@@ -53,7 +67,7 @@
             overflow-x: hidden;
         }
 
-        /* --- Animations d'apparition --- */
+        /* --- Animations --- */
         .reveal {
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 1; 
@@ -64,7 +78,7 @@
             transform: translateY(40px) !important;
         }
 
-        /* --- Scène 3D CSS --- */
+        /* --- Scène 3D CSS Originale --- */
         .perpignan-stage {
             perspective: 1200px;
             overflow: hidden;
@@ -120,11 +134,10 @@
             border-radius: 50% 50% 0 0;
             margin-bottom: -60px;
             opacity: 0.9;
-            box-shadow: inset 0 10px 20px rgba(0,0,0,0.05);
         }
 
         .layer-city { transform: translateZ(0px); padding-bottom: 0; }
-        
+
         .castillet {
             position: relative;
             width: 160px; height: 180px;
@@ -140,8 +153,7 @@
         .castillet-top {
             width: 70px; height: 50px;
             background: var(--warmgreen-800);
-            position: absolute;
-            top: -35px;
+            position: absolute; top: -35px;
             clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
         }
         .castillet-door {
@@ -183,63 +195,32 @@
             animation: float 8s ease-in-out infinite;
         }
 
-        .hover-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Ajustement des Logos */
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
-            padding: 1rem;
-        }
+        .hover-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1); }
 
-        /* Scrollbar horizontale masquée */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        /* Style pour les images manquantes (fallback) */
-        img[alt]:after {  
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #f5f5f4;
-            content: 'Image manquante : ' attr(src);
-            text-align: center;
-            padding-top: 20%;
-            font-size: 0.8rem;
-            color: #78716c;
-            border: 1px dashed #d6d3d1;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* --- Lightbox (Zoom Image) Styles --- */
-        #lightbox {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        #lightbox.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .zoomable {
-            cursor: zoom-in;
+        /* Lightbox */
+        #lightbox { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        #lightbox.active { opacity: 1; pointer-events: auto; }
+        .zoomable { cursor: zoom-in; }
+
+        /* FAQ Accordion Styles */
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 200px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        /* Truncate pour les avis */
+        .line-clamp-6 {
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     </style>
 </head>
+
 <body class="selection:bg-warmgreen-500 selection:text-white text-stone-900 bg-stone-50">
 
     <div id="lightbox" class="fixed inset-0 z-[100] bg-stone-900/95 flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
@@ -247,7 +228,6 @@
             <i data-lucide="x" class="w-10 h-10"></i>
         </button>
         <img id="lightbox-img" src="" alt="Agrandissement" class="max-h-[90vh] max-w-[95vw] object-contain rounded-md shadow-2xl" onclick="event.stopPropagation()">
-        <p class="absolute bottom-6 text-white/70 text-sm font-medium">Cliquez n'importe où pour fermer</p>
     </div>
 
     <nav class="fixed w-full z-50 top-0 backdrop-blur-lg border-b transition-all duration-300 bg-white/80 border-stone-200/60" id="navbar">
@@ -258,20 +238,31 @@
                 </div>
                 BÂTICOLLECTIF<span class="text-warmgreen-600">66</span>
             </a>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-500">
-                <a href="#concept" class="transition-colors hover:text-warmgreen-600">Le Concept</a>
-                <a href="#artisans" class="transition-colors hover:text-warmgreen-600">Les Artisans</a>
-                <a href="#realisations" class="transition-colors hover:text-warmgreen-600">Réalisations</a>
-                <a href="#contact" class="px-5 py-2.5 rounded-full transition-all flex items-center gap-2 bg-stone-900 text-white hover:bg-warmgreen-600 hover:shadow-lg transform active:scale-95">
+
+            <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-stone-500">
+                <a href="#concept" class="hover:text-warmgreen-600 transition-colors">Concept</a>
+                <a href="#etapes" class="hover:text-warmgreen-600 transition-colors">Fonctionnement</a>
+                <a href="#realisations" class="hover:text-warmgreen-600 transition-colors">Réalisations</a>
+                
+                <a href="https://wa.me/33679728835" target="_blank" class="flex items-center gap-2 text-stone-600 hover:text-green-600 transition-colors font-semibold">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    WhatsApp
+                </a>
+
+                <a href="#contact" class="px-5 py-2.5 rounded-full transition-all flex items-center gap-2 bg-stone-900 text-white hover:bg-warmgreen-600 hover:shadow-lg transform active:scale-95 ml-2">
                     Devis Gratuit
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
             </div>
 
-            <button class="md:hidden text-stone-900">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            <div class="lg:hidden flex items-center gap-4">
+                 <a href="https://wa.me/33679728835" class="text-green-600">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                </a>
+                <button class="text-stone-900">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -302,14 +293,14 @@
                 <i data-lucide="map-pin" class="w-3 h-3"></i>
                 Perpignan & Pyrénées-Orientales
             </div>
-            
+
             <h1 class="font-display text-5xl md:text-7xl font-bold tracking-tight text-stone-900 leading-[1.1]">
                 Vos travaux, <span class="text-warmgreen-600">sans intermédiaire</span>,<br> 
-                avec une équipe locale soudée.
+                avec les meilleurs artisans du 66.
             </h1>
-            
+
             <p class="text-lg md:text-xl max-w-2xl text-stone-600 leading-relaxed">
-                Pourquoi payer une entreprise générale ? BâtiCollectif réunit les meilleurs artisans indépendants du 66. Coordination naturelle, prix directs, responsabilité engagée.
+                Rénovation complète, extension et aménagement. Nous coordonnons votre chantier, vous payez les artisans en direct. Zéro commission cachée.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto pt-6">
@@ -317,7 +308,7 @@
                     Estimer mon projet
                     <span class="text-xs font-normal text-white/80 block">(Réponse 48h)</span>
                 </a>
-                <a href="#concept" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 shadow-sm hover:shadow-md transition-all text-center">
+                <a href="#etapes" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 shadow-sm hover:shadow-md transition-all text-center">
                     Comment ça marche ?
                 </a>
             </div>
@@ -328,12 +319,8 @@
                     Artisans vérifiés
                 </div>
                 <div class="flex items-center gap-2 bg-white/50 px-3 py-1 rounded-full border border-white/50">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-warmgreen-600"></i>
+                    <i data-lucide="shield-check" class="w-4 h-4 text-warmgreen-600"></i>
                     Assurances décennales
-                </div>
-                <div class="flex items-center gap-2 bg-white/50 px-3 py-1 rounded-full border border-white/50">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-warmgreen-600"></i>
-                    Prix directs
                 </div>
             </div>
         </div>
@@ -344,7 +331,7 @@
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
                 <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mb-4">Plus agile qu'une entreprise générale</h2>
                 <p class="text-stone-500 text-lg">
-                    Nous avons créé ce collectif pour pallier les défauts du marché : le manque de communication entre artisans isolés et le coût exorbitant des entreprises "Tout Corps d'État".
+                    Le collectif pallie les défauts du marché : nous supprimons les marges des intermédiaires tout en garantissant la coordination.
                 </p>
             </div>
 
@@ -355,18 +342,17 @@
                     </div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Coordination Naturelle</h3>
                     <p class="text-stone-600 leading-relaxed">
-                        Nos artisans se connaissent par cœur. Le plombier sait quand le carreleur intervient. Pas de temps mort, pas de conflits, le chantier avance tout seul.
+                        Nos artisans se connaissent par cœur. Le plombier sait quand le carreleur intervient. Pas de temps mort, pas de conflits.
                     </p>
                 </div>
 
-                <div class="p-8 rounded-3xl bg-stone-50 border border-stone-100 hover:border-warmgreen-300 transition-all duration-300 hover:shadow-lg reveal delay-100 group relative overflow-hidden">
-                    <div class="absolute top-4 right-4 px-3 py-1 bg-warmgreen-100 text-warmgreen-800 text-[10px] font-bold uppercase tracking-wide rounded-full">Économique</div>
+                <div class="p-8 rounded-3xl bg-stone-50 border border-stone-100 hover:border-warmgreen-300 transition-all duration-300 hover:shadow-lg reveal delay-100 group">
                     <div class="w-14 h-14 rounded-2xl bg-white border border-stone-100 flex items-center justify-center mb-6 shadow-sm text-warmgreen-600 group-hover:scale-110 transition-transform">
                         <i data-lucide="coins" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Prix Compétitifs</h3>
                     <p class="text-stone-600 leading-relaxed">
-                        Contrairement à une entreprise générale qui marge sur ses sous-traitants, ici chaque artisan facture en direct. Vous payez la prestation réelle, sans frais cachés.
+                        Vous ne payez pas la marge d'une entreprise générale. Chaque artisan facture sa prestation réelle en direct.
                     </p>
                 </div>
 
@@ -376,37 +362,87 @@
                     </div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Sérénité Totale</h3>
                     <p class="text-stone-600 leading-relaxed">
-                        Chaque artisan engage son nom et sa propre assurance décennale. Ils ne sont pas de simples exécutants, mais des chefs d'entreprise motivés par la qualité.
+                        Chaque artisan engage son nom et sa propre assurance décennale. Ils ne sont pas de simples sous-traitants, mais des partenaires.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-stone-50" id="artisans">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 reveal">
-                <div>
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900">L'Équipe Locale</h2>
-                    <p class="text-stone-500 mt-2 text-lg">Les experts essentiels réunis pour vos projets dans le 66.</p>
-                </div>
-                <a href="#contact" class="text-sm font-semibold flex items-center gap-2 text-warmgreen-600 hover:text-warmgreen-700 transition-colors group">
-                    Rejoindre le collectif <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                </a>
+    <section class="py-24 bg-stone-50" id="etapes">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-warmgreen-600 font-bold tracking-wide uppercase text-sm">Processus simplifié</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mt-2">Votre chantier en 4 étapes</h2>
             </div>
 
+            <div class="relative">
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-stone-200 -translate-x-1/2"></div>
+
+                <div class="space-y-12">
+                    <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
+                        <div class="md:w-1/2 text-right md:pr-12 order-2 md:order-1">
+                            <h3 class="text-xl font-bold text-stone-900">1. Décrivez votre projet</h3>
+                            <p class="text-stone-600 mt-2">Remplissez le formulaire unique. C'est le point d'entrée pour alerter tous les corps de métier nécessaires.</p>
+                        </div>
+                        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">1</div>
+                        <div class="md:w-1/2 md:pl-12 order-1 md:order-2">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Prise+de+contact" alt="Contact" class="rounded-2xl shadow-md rotate-2 hover:rotate-0 transition-transform w-full md:w-auto">
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
+                        <div class="md:w-1/2 md:pr-12 order-1">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Visite+Technique" alt="Visite" class="rounded-2xl shadow-md -rotate-2 hover:rotate-0 transition-transform ml-auto w-full md:w-auto">
+                        </div>
+                        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-warmgreen-600 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">2</div>
+                        <div class="md:w-1/2 md:pl-12 order-2">
+                            <h3 class="text-xl font-bold text-stone-900">2. Visite & Devis Directs</h3>
+                            <p class="text-stone-600 mt-2">Nous organisons une visite groupée. Sous 5 jours, vous recevez les devis détaillés de chaque artisan, sans commission.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
+                        <div class="md:w-1/2 text-right md:pr-12 order-2 md:order-1">
+                            <h3 class="text-xl font-bold text-stone-900">3. Planification</h3>
+                            <p class="text-stone-600 mt-2">Nous validons ensemble le calendrier. Les artisans se coordonnent entre eux pour les dates d'intervention.</p>
+                        </div>
+                        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">3</div>
+                        <div class="md:w-1/2 md:pl-12 order-1 md:order-2">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Planning" alt="Planning" class="rounded-2xl shadow-md rotate-1 hover:rotate-0 transition-transform w-full md:w-auto">
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
+                        <div class="md:w-1/2 md:pr-12 order-1">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Travaux+%26+Livraison" alt="Travaux" class="rounded-2xl shadow-md -rotate-1 hover:rotate-0 transition-transform ml-auto w-full md:w-auto">
+                        </div>
+                        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-warmgreen-700 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">4</div>
+                        <div class="md:w-1/2 md:pl-12 order-2">
+                            <h3 class="text-xl font-bold text-stone-900">4. Travaux & Réception</h3>
+                            <p class="text-stone-600 mt-2">Les travaux démarrent. Vous avez un interlocuteur référent. Réception du chantier avec PV de fin de travaux.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white" id="artisans">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mb-8 reveal">L'Équipe Locale</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                
+
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal">
-                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-white">
-                        <img src="logo-macon.jpg" alt="Logo Renov Style" class="transition-transform duration-500 group-hover:scale-105">
+                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
+                        <i data-lucide="hammer" class="w-12 h-12 text-stone-400"></i>
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Gros Œuvre
                         </div>
                     </div>
                     <div class="px-3 pb-2">
                         <h3 class="font-display font-bold text-lg text-stone-900">Maxime Machet</h3>
-                        <p class="text-sm text-stone-500 mb-2">Renov Style</p>
+                        <p class="text-sm text-stone-500 mb-2">20 ans d'expérience</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Rivesaltes
                         </div>
@@ -414,15 +450,15 @@
                 </div>
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-100">
-                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-white">
-                         <img src="logo-plomberie.jpg" alt="Logo Joseph Gamiz" class="transition-transform duration-500 group-hover:scale-105">
+                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
+                        <i data-lucide="wrench" class="w-12 h-12 text-stone-400"></i>
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Plomberie
                         </div>
                     </div>
                     <div class="px-3 pb-2">
                         <h3 class="font-display font-bold text-lg text-stone-900">Joseph Gamiz</h3>
-                        <p class="text-sm text-stone-500 mb-2">Salle de bain & Chauffage</p>
+                        <p class="text-sm text-stone-500 mb-2">Spécialiste SDB</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Canet
                         </div>
@@ -430,15 +466,15 @@
                 </div>
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-200">
-                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-800">
-                         <img src="logo-elec.JPG" alt="Logo DVE" class="transition-transform duration-500 group-hover:scale-105">
+                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-800 text-white">
+                         <i data-lucide="zap" class="w-12 h-12"></i>
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Électricité
                         </div>
                     </div>
                     <div class="px-3 pb-2">
-                        <h3 class="font-display font-bold text-lg text-stone-900">Sébastien Verquin</h3>
-                        <p class="text-sm text-stone-500 mb-2">DVF - Domotique & Vidéo</p>
+                        <h3 class="font-display font-bold text-lg text-stone-900">Sébastien V.</h3>
+                        <p class="text-sm text-stone-500 mb-2">Domotique & Vidéo</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Toulouges
                         </div>
@@ -446,15 +482,15 @@
                 </div>
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-300">
-                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-white">
-                         <img src="logo-peinture.jpg" alt="Logo Breijo" class="transition-transform duration-500 group-hover:scale-105">
+                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
+                         <i data-lucide="paint-brush" class="w-12 h-12 text-stone-400"></i>
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Finition & Déco
                         </div>
                     </div>
                     <div class="px-3 pb-2">
                         <h3 class="font-display font-bold text-lg text-stone-900">José Breijo</h3>
-                        <p class="text-sm text-stone-500 mb-2">Entreprise Breijo</p>
+                        <p class="text-sm text-stone-500 mb-2">Peinture & Sols</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Perpignan
                         </div>
@@ -462,63 +498,51 @@
                 </div>
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-400">
-                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-white">
-                         <img src="logo-archi.JPG" alt="Logo Des 2 Mains" class="transition-transform duration-500 group-hover:scale-105">
+                    <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
+                         <i data-lucide="ruler" class="w-12 h-12 text-stone-400"></i>
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Conception
                         </div>
                     </div>
                     <div class="px-3 pb-2">
                         <h3 class="font-display font-bold text-lg text-stone-900">Cécilia Trinh</h3>
-                        <p class="text-sm text-stone-500 mb-2">Des 2 Mains - Architecte d'intérieur</p>
+                        <p class="text-sm text-stone-500 mb-2">Architecte d'intérieur</p>
                         <div class="flex items-center gap-1 text-xs font-medium text-warmgreen-700 bg-warmgreen-50 px-2 py-1 rounded w-fit">
                             <i data-lucide="map-pin" class="w-3 h-3"></i> Perpignan
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <section class="py-24 bg-stone-900 text-white" id="realisations">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12 reveal">
-                <div>
-                    <h2 class="font-display text-3xl md:text-4xl font-bold">Nos réalisations en détail</h2>
-                    <p class="text-stone-400 mt-2 max-w-xl">Découvrez les différentes étapes de nos chantiers collectifs. Cliquez sur une image pour l'agrandir.</p>
-                </div>
-            </div>
-
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-12">Nos réalisations en détail</h2>
             <div class="space-y-16">
                 <div class="reveal">
                     <div class="grid md:grid-cols-3 gap-6 items-start">
-                        <div class="md:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in" onclick="openLightbox('Projet-reel-1.jpg')">
-                            <img src="Projet-reel-1.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="md:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('https://placehold.co/1200x800/333/eee?text=Appart+Hotel+Termine')">
+                            <img src="https://placehold.co/1200x800/333/eee?text=Appart+Hotel+Termine" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full pointer-events-none">
                                 <h3 class="font-display text-2xl font-bold">Rénovation Appart-Hôtels</h3>
-                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Transformation Logements Touristiques • Perpignan</p>
-                            </div>
-                            <div class="absolute top-4 right-4 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                                <i data-lucide="maximize-2" class="w-5 h-5 text-white"></i>
+                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Perpignan Centre</p>
                             </div>
                         </div>
                         <div class="flex flex-col h-full justify-between gap-4">
                             <div class="p-6 bg-stone-800 rounded-2xl border border-stone-700">
                                 <h4 class="font-bold mb-2 text-white">Le projet</h4>
                                 <p class="text-sm text-stone-400 leading-relaxed">
-                                    Modernisation complète d'un plateau pour créer des appartements hôteliers haut de gamme. Optimisation des espaces, isolation phonique renforcée et finitions soignées.
+                                    Modernisation complète d'un plateau. Optimisation des espaces, isolation phonique renforcée.
                                 </p>
-                                <div class="flex flex-wrap gap-2 mt-4">
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Maçon</span>
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Électricien</span>
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Plombier</span>
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Peintre</span>
+                                <div class="mt-4 pt-4 border-t border-stone-700">
+                                    <p class="text-xs text-stone-500 uppercase">Budget</p>
+                                    <p class="font-bold text-white">50k€ - 70k€</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 overflow-x-auto pb-2 hide-scrollbar snap-x">
-                                <img src="Projet-reel-2.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
-                                <img src="Projet-reel-1.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors opacity-70 hover:opacity-100">
+                                <img src="https://placehold.co/400x400/444/aaa?text=Travaux" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
+                                <img src="https://placehold.co/400x400/444/aaa?text=Details" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
                             </div>
                         </div>
                     </div>
@@ -526,37 +550,101 @@
 
                 <div class="reveal delay-100">
                     <div class="grid md:grid-cols-3 gap-6 items-start">
-                         <div class="md:col-span-2 md:order-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in" onclick="openLightbox('Projet-reel-3.jpg')">
-                            <img src="Projet-reel-3.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                         <div class="md:col-span-2 md:order-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('https://placehold.co/1200x800/333/eee?text=Maison+Individuelle+Terminee')">
+                            <img src="https://placehold.co/1200x800/333/eee?text=Maison+Individuelle+Terminee" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full pointer-events-none">
-                                <h3 class="font-display text-2xl font-bold">Rénovation Maison & Appartement</h3>
-                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Réhabilitation Complète • Pyrénées-Orientales</p>
-                            </div>
-                            <div class="absolute top-4 right-4 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                                <i data-lucide="maximize-2" class="w-5 h-5 text-white"></i>
+                                <h3 class="font-display text-2xl font-bold">Rénovation & Extension</h3>
+                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Saint-Estève</p>
                             </div>
                         </div>
                         <div class="flex flex-col h-full justify-between gap-4 md:order-1">
                             <div class="p-6 bg-stone-800 rounded-2xl border border-stone-700">
                                 <h4 class="font-bold mb-2 text-white">Le projet</h4>
                                 <p class="text-sm text-stone-400 leading-relaxed">
-                                    Remise aux normes et embellissement d'une maison individuelle et d'un appartement attenant. Coordination de tous les corps d'état pour une livraison clé en main.
+                                    Ouverture d'un mur porteur, rénovation totale électricité et création d'une suite parentale.
                                 </p>
-                                <div class="flex flex-wrap gap-2 mt-4">
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Maçon</span>
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Électricien</span>
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Plombier</span>
-                                    <span class="text-[10px] border border-stone-600 px-2 py-1 rounded text-stone-300">Peintre</span>
+                                <div class="mt-4 pt-4 border-t border-stone-700">
+                                    <p class="text-xs text-stone-500 uppercase">Durée</p>
+                                    <p class="font-bold text-white">3 mois</p>
                                 </div>
                             </div>
                              <div class="flex gap-3 overflow-x-auto pb-2 hide-scrollbar snap-x">
-                                <img src="Projet-reel-4.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
-                                <img src="Projet-reel-3.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors opacity-70 hover:opacity-100">
+                                <img src="https://placehold.co/400x400/444/aaa?text=Avant" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
+                                <img src="https://placehold.co/400x400/444/aaa?text=Pendant" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="py-20 bg-stone-50 border-b border-stone-200" id="avis">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-display text-3xl font-bold text-center mb-12 text-stone-900">Ce que disent nos clients</h2>
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 reveal flex flex-col">
+                    <div class="flex text-warmgreen-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <div class="relative">
+                        <p class="text-stone-600 italic mb-4 line-clamp-6 text-sm leading-relaxed" id="avis-txt-1">
+                            "Nous avons fait appel à Cecilia et David pour la rénovation de notre maison et trouver une ambiance décorative plus actuelle. Nous avons été enchanté de cette collaboration, car ces deux professionnels ont réussi le challenge au delà de nos attentes, et nous vivons désormais dans une toute nouvelle maison sans avoir déménagé..Les conseils judicieux avec plans détaillés pour la nouvelle cuisine, la nouvelle salle de douche, les cloisons ou portes à modifier… l’emplacement des lumières, tout est parfaitement harmonieux sans sacrifier le côté ultra pratique ! De plus Cecilia et David s’occupent absolument de tout pour le choix des artisans qui sont, sans exceptions, sérieux et compétents. Les chantiers sont sans stress, tout étant parfaitement orchestré. De plus nous avons pu grâce à leurs carnets d’adresses déco choisir ensemble un cadre de vie beaucoup plus moderne tout en respectant nos goûts et notre environnement extérieur (maison avec jardin). Que de dire de plus si ce n’est que ce fut une grande chance pour nous d’avoir sollicité l’entreprise « Des 2 Mains » et que nous la recommandons vivement à tous ceux qui souhaitent aujourd’hui se lancer dans une nouvelle décoration ou restructuration intérieure."
+                        </p>
+                        <button onclick="toggleReview('avis-txt-1', this)" class="text-warmgreen-600 font-bold text-xs hover:underline focus:outline-none">Lire l'avis complet</button>
+                    </div>
+                    <div class="flex items-center gap-3 mt-4 pt-4 border-t border-stone-100">
+                        <div>
+                            <p class="text-sm font-bold text-stone-900">Catherine Mayer</p>
+                            <p class="text-xs text-stone-400">Rénovation Maison</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 reveal delay-100 flex flex-col">
+                    <div class="flex text-warmgreen-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <div class="relative">
+                        <p class="text-stone-600 italic mb-4 line-clamp-6 text-sm leading-relaxed" id="avis-txt-2">
+                            "Pour avoir bénéficié de l’accompagnement de Cécilia dans mes travaux de rénovation je recommande fortement ! Personne très à l’écoute ; très sensible aux besoins et attentes du client ; toujours des conseils avisés et tellement subtils ! Expérience professionnelle au top ! Et en plus une complicité et une complémentarité exceptionnelle avec son fils David ! Une équipe formidable ! Et en parallèle un extraordinaire relationnel avec les professionnels qui l’entourent ! Bravo pour tout et encore merci pour cette implication dans le métier et tout le sérieux qui vous caractérise !"
+                        </p>
+                        <button onclick="toggleReview('avis-txt-2', this)" class="text-warmgreen-600 font-bold text-xs hover:underline focus:outline-none">Lire l'avis complet</button>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-100">
+                        <p class="text-sm font-bold text-stone-900">Martine Delrieu</p>
+                        <p class="text-xs text-stone-400">Local Guide</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 reveal delay-200 flex flex-col">
+                    <div class="flex text-warmgreen-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                     <div class="relative">
+                        <p class="text-stone-600 italic mb-4 line-clamp-6 text-sm leading-relaxed" id="avis-txt-3">
+                            "Des 2 mains nous accompagne depuis 8 ans dans tous nos projets de rénovation de chambres d'hôtels et d'appartements sur Argeles/Collioure et sur Dijon. Nous avons toujours été très satisfaits du résultat. Des espaces optimisés, design & chaleureux, plébiscités par nos clients. Ecoute, compréhension des contraintes, force de proposition, réactivité, budgets raisonnables, mise en relation avec des artisans professionnels, que demander de plus ? Un grand MERCI pour le travail réalisé jusqu'à aujourd'hui."
+                        </p>
+                        <button onclick="toggleReview('avis-txt-3', this)" class="text-warmgreen-600 font-bold text-xs hover:underline focus:outline-none">Lire l'avis complet</button>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-100">
+                        <p class="text-sm font-bold text-stone-900">Pascal Derville</p>
+                        <p class="text-xs text-stone-400">Hôtelier (Argelès/Collioure)</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -568,7 +656,7 @@
                     <i data-lucide="mail" class="w-6 h-6"></i>
                 </div>
                 <h2 class="font-display text-4xl font-bold text-stone-900 mb-4">Parlez-nous de votre projet</h2>
-                <p class="text-stone-500 text-lg">Remplissez ce formulaire unique. Il sera transmis instantanément aux artisans concernés.</p>
+                <p class="text-stone-500 text-lg">Remplissez ce formulaire unique. Nous vous recontactons sous 48h.</p>
             </div>
 
             <form action="https://formspree.io/f/xblbvzdd" method="POST" id="contact-form" class="space-y-6 reveal delay-100 bg-white p-8 md:p-10 rounded-3xl border border-stone-200 shadow-xl shadow-stone-200/50">
@@ -583,6 +671,15 @@
                     </div>
                 </div>
                 <div class="space-y-2">
+                    <label class="text-sm font-bold text-stone-700">Type de projet</label>
+                     <select name="type_projet" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 outline-none bg-stone-50 focus:bg-white">
+                        <option value="Rénovation Globale">Rénovation Complète</option>
+                        <option value="Salle de Bain">Salle de Bain / Cuisine</option>
+                        <option value="Extension">Extension</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
                     <label class="text-sm font-bold text-stone-700">Détails</label>
                     <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-warmgreen-500 focus:border-transparent outline-none transition-all bg-stone-50 focus:bg-white resize-none" placeholder="Décrivez votre besoin..."></textarea>
                 </div>
@@ -592,18 +689,82 @@
                 </button>
                 <p id="form-status" class="text-center text-sm font-bold hidden"></p>
             </form>
-            </div>
+        </div>
     </section>
 
-    <footer class="bg-stone-50 border-t border-stone-200 pt-16 pb-8">
-        <div class="max-w-6xl mx-auto px-6 text-center text-sm text-stone-500">
-            <p>© 2025 BâtiCollectif. Tous droits réservés.</p>
+    <section class="py-20 bg-stone-50 border-t border-stone-200" id="faq">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-display text-3xl font-bold text-center mb-12 text-stone-900">Questions Fréquentes</h2>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="w-full flex items-center justify-between p-6 hover:bg-stone-50 transition-colors text-left" onclick="toggleFaq(this)">
+                        <span class="font-bold text-stone-900">Pourquoi est-ce moins cher qu'une entreprise générale ?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-stone-400 faq-icon transition-transform"></i>
+                    </button>
+                    <div class="faq-content bg-stone-50">
+                        <div class="p-6 text-stone-600 leading-relaxed border-t border-stone-100">
+                            Une entreprise générale "Tout Corps d'État" prend une marge (souvent 15 à 25%) sur le travail de ses sous-traitants pour financer sa structure. Avec BâtiCollectif, vous payez chaque artisan directement au prix réel de sa prestation.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="w-full flex items-center justify-between p-6 hover:bg-stone-50 transition-colors text-left" onclick="toggleFaq(this)">
+                        <span class="font-bold text-stone-900">Qui gère le planning et la coordination ?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-stone-400 faq-icon transition-transform"></i>
+                    </button>
+                    <div class="faq-content bg-stone-50">
+                        <div class="p-6 text-stone-600 leading-relaxed border-t border-stone-100">
+                            C'est la force du collectif. Nous désignons un artisan "référent" sur votre chantier qui fait le lien avec les autres. Comme nous avons l'habitude de travailler ensemble, l'enchaînement des tâches (placo, elec, peinture) se fait naturellement.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="w-full flex items-center justify-between p-6 hover:bg-stone-50 transition-colors text-left" onclick="toggleFaq(this)">
+                        <span class="font-bold text-stone-900">Comment ça se passe pour les assurances ?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-stone-400 faq-icon transition-transform"></i>
+                    </button>
+                    <div class="faq-content bg-stone-50">
+                        <div class="p-6 text-stone-600 leading-relaxed border-t border-stone-100">
+                            Chaque artisan intervenant sur votre chantier vous fournit son attestation d'assurance décennale à jour avant le début des travaux. Vous êtes couvert pour 10 ans sur chaque lot (maçonnerie, plomberie, etc.).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-stone-200 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 mb-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-display font-bold text-lg text-stone-900 mb-2">BÂTICOLLECTIF<span class="text-warmgreen-600">66</span></h3>
+                    <p class="text-sm text-stone-500 max-w-sm">
+                        L'intelligence collective au service de votre habitat. Des artisans locaux, des prix justes, un travail de qualité.
+                    </p>
+                </div>
+                <div class="flex flex-col md:items-end justify-center text-sm text-stone-500">
+                    <p>Intervention : Perpignan & Alentours</p>
+                    <p class="mt-1">
+                        <a href="https://wa.me/33679728835" class="hover:text-warmgreen-600 transition-colors flex items-center gap-1 md:justify-end justify-center">
+                            <i data-lucide="phone" class="w-3 h-3"></i> 06 79 72 88 35
+                        </a>
+                    </p>
+                    <a href="mailto:contact@baticollectif66.fr" class="hover:text-warmgreen-600 transition-colors">contact@baticollectif66.fr</a>
+                </div>
+            </div>
+            <div class="border-t border-stone-200 pt-8 text-center text-sm text-stone-400">
+                <p>© 2025 BâtiCollectif. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
 
+        /* --- Reveal on Scroll --- */
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
             const revealOnScroll = () => {
@@ -621,9 +782,9 @@
             revealOnScroll();
         });
 
+        /* --- Header 3D Animation --- */
         const heroSection = document.querySelector('header');
         const world = document.getElementById('world');
-        
         if(heroSection && world) {
             heroSection.addEventListener('mousemove', (e) => {
                 const { left, top, width, height } = heroSection.getBoundingClientRect();
@@ -640,6 +801,7 @@
             });
         }
 
+        /* --- Navbar Sticky --- */
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -651,7 +813,7 @@
             }
         });
 
-        /* --- Lightbox Scripts --- */
+        /* --- Lightbox --- */
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
@@ -671,9 +833,28 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
-        /* --- SCRIPT FORMSPREE AJAX (ENVOI SANS REDIRECTION) --- */
+        /* --- FAQ Toggle --- */
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+        }
+
+        /* --- Avis Toggle --- */
+        function toggleReview(id, btn) {
+            const textElement = document.getElementById(id);
+            if (textElement.classList.contains('line-clamp-6')) {
+                textElement.classList.remove('line-clamp-6');
+                btn.innerText = "Réduire l'avis";
+            } else {
+                textElement.classList.add('line-clamp-6');
+                btn.innerText = "Lire l'avis complet";
+                // Optionnel : remonter vers le début de l'avis si on réduit
+                // textElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        /* --- Form Submission --- */
         const form = document.getElementById("contact-form");
-    
         async function handleSubmit(event) {
             event.preventDefault();
             const status = document.getElementById("form-status");
@@ -688,20 +869,15 @@
             fetch(event.target.action, {
                 method: form.method,
                 body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // SUCCÈS
                     status.innerHTML = "Merci ! Votre message a bien été envoyé aux artisans.";
-                    status.className = "text-center text-sm font-bold text-warmgreen-600 mt-4 block";
+                    status.className = "text-center text-sm font-bold text-warmgreen-600 mt-4 block p-2 bg-warmgreen-50 rounded-lg";
                     form.reset();
-                    
                     btnText.innerText = "Envoyé !";
                     btn.classList.remove('bg-stone-900');
                     btn.classList.add('bg-warmgreen-600');
-                    
                     setTimeout(() => {
                         btn.disabled = false;
                         btnText.innerText = originalText;
@@ -710,20 +886,13 @@
                         status.classList.add('hidden');
                     }, 5000);
                 } else {
-                    // ERREUR
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "Oups ! Il y a eu un problème lors de l'envoi.";
-                        }
-                        status.className = "text-center text-sm font-bold text-red-600 mt-4 block";
-                        btn.disabled = false;
-                        btnText.innerText = originalText;
-                    })
+                    status.innerHTML = "Oups ! Il y a eu un problème.";
+                    status.className = "text-center text-sm font-bold text-red-600 mt-4 block";
+                    btn.disabled = false;
+                    btnText.innerText = originalText;
                 }
             }).catch(error => {
-                status.innerHTML = "Erreur de connexion. Réessayez plus tard.";
+                status.innerHTML = "Erreur de connexion.";
                 status.className = "text-center text-sm font-bold text-red-600 mt-4 block";
                 btn.disabled = false;
                 btnText.innerText = originalText;
