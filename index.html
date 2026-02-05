@@ -4,22 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BâtiCollectif 66 – Artisans Réunis à Perpignan (Prix Directs)</title>
-    <meta name="description" content="Le groupement d'artisans locaux pour vos travaux dans les Pyrénées-Orientales. Rénovation sans intermédiaire, coordination incluse et prix directs artisans.">
+    <!-- SEO Principal : Titres et descriptions optimisés pour Google -->
+    <title>BâtiCollectif 66 – Artisans Réunis à Perpignan | Rénovation & Travaux</title>
+    <meta name="description" content="Groupement d'artisans locaux pour vos travaux dans les Pyrénées-Orientales (66). Rénovation sans intermédiaire, coordination incluse. Prix directs artisans.">
+    <meta name="keywords" content="rénovation perpignan, artisans 66, travaux pyrénées orientales, entreprise batiment perpignan, coordinateur de travaux, maçon 66, plombier perpignan">
+    <meta name="author" content="BâtiCollectif 66">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://baticollectif66.fr">
 
+    <!-- Open Graph / Facebook / WhatsApp (Pour que le lien soit joli quand on le partage) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baticollectif66.fr">
+    <meta property="og:title" content="BâtiCollectif 66 – Vos travaux sans intermédiaire">
+    <meta property="og:description" content="Rénovez au prix juste avec les meilleurs artisans de Perpignan. Coordination incluse, devis directs.">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Geo Tags (Référencement Local pour Google Maps) -->
+    <meta name="geo.region" content="FR-66">
+    <meta name="geo.placename" content="Perpignan">
+    <meta name="geo.position" content="42.6986;2.8956">
+    <meta name="ICBM" content="42.6986, 2.8956">
+
+    <!-- Données Structurées JSON-LD (Pour que Google comprenne votre business) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "GeneralContractor",
       "name": "BâtiCollectif 66",
+      "url": "https://baticollectif66.fr",
       "telephone": "+33679728835",
-      "description": "Collectif d'artisans indépendants pour la rénovation sans intermédiaire.",
+      "email": "contact@baticollectif66.fr",
+      "description": "Collectif d'artisans indépendants pour la rénovation sans intermédiaire à Perpignan et dans les Pyrénées-Orientales.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Perpignan",
         "postalCode": "66000",
+        "addressRegion": "Occitanie",
         "addressCountry": "FR"
-      }
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.6986,
+        "longitude": 2.8956
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Perpignan" },
+        { "@type": "City", "name": "Canet-en-Roussillon" },
+        { "@type": "City", "name": "Argelès-sur-Mer" },
+        { "@type": "AdministrativeArea", "name": "Pyrénées-Orientales" }
+      ],
+      "priceRange": "€€-€€€"
     }
     </script>
 
@@ -230,13 +264,15 @@
 
 <body class="selection:bg-warmgreen-500 selection:text-white text-stone-900 bg-stone-50">
 
+    <!-- Lightbox pour agrandir les images -->
     <div id="lightbox" class="fixed inset-0 z-[100] bg-stone-900/95 flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
-        <button class="absolute top-6 right-6 text-white hover:text-warmgreen-500 transition-colors">
+        <button class="absolute top-6 right-6 text-white hover:text-warmgreen-500 transition-colors" aria-label="Fermer">
             <i data-lucide="x" class="w-10 h-10"></i>
         </button>
-        <img id="lightbox-img" src="" alt="Agrandissement" class="max-h-[90vh] max-w-[95vw] object-contain rounded-md shadow-2xl" onclick="event.stopPropagation()">
+        <img id="lightbox-img" src="" alt="Agrandissement projet rénovation" class="max-h-[90vh] max-w-[95vw] object-contain rounded-md shadow-2xl" onclick="event.stopPropagation()">
     </div>
 
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 backdrop-blur-lg border-b transition-all duration-300 bg-white/80 border-stone-200/60" id="navbar">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" class="text-xl font-display font-bold tracking-tight flex items-center gap-3 group text-stone-900">
@@ -251,7 +287,7 @@
                 <a href="#etapes" class="hover:text-warmgreen-600 transition-colors">Fonctionnement</a>
                 <a href="#realisations" class="hover:text-warmgreen-600 transition-colors">Réalisations</a>
                 
-                <a href="https://wa.me/33679728835" target="_blank" class="flex items-center gap-2 text-stone-600 hover:text-green-600 transition-colors font-semibold">
+                <a href="https://wa.me/33679728835" target="_blank" rel="noopener" class="flex items-center gap-2 text-stone-600 hover:text-green-600 transition-colors font-semibold">
                     <i data-lucide="message-circle" class="w-5 h-5"></i>
                     WhatsApp
                 </a>
@@ -263,16 +299,17 @@
             </div>
 
             <div class="lg:hidden flex items-center gap-4">
-                 <a href="https://wa.me/33679728835" class="text-green-600">
+                 <a href="https://wa.me/33679728835" class="text-green-600" aria-label="Contact WhatsApp">
                     <i data-lucide="message-circle" class="w-6 h-6"></i>
                 </a>
-                <button class="text-stone-900">
+                <button class="text-stone-900" aria-label="Menu">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
     </nav>
 
+    <!-- Header avec animation 3D -->
     <header class="relative pt-40 pb-32 md:pt-56 md:pb-48 overflow-hidden">
         <div class="perpignan-stage">
             <div class="perpignan-world" id="world">
@@ -333,12 +370,13 @@
         </div>
     </header>
 
+    <!-- Concept -->
     <section class="py-24 bg-white border-y border-stone-100" id="concept">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mb-4">Plus agile qu'une entreprise générale</h2>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mb-4">Plus agile qu'une entreprise générale de bâtiment</h2>
                 <p class="text-stone-500 text-lg">
-                    Le collectif pallie les défauts du marché : nous supprimons les marges des intermédiaires tout en garantissant la coordination.
+                    Le collectif pallie les défauts du marché : nous supprimons les marges des intermédiaires tout en garantissant la coordination parfaite de votre chantier.
                 </p>
             </div>
 
@@ -349,7 +387,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Coordination Naturelle</h3>
                     <p class="text-stone-600 leading-relaxed">
-                        Nos artisans se connaissent par cœur. Le plombier sait quand le carreleur intervient. Pas de temps mort, pas de conflits.
+                        Nos artisans se connaissent par cœur. Le plombier sait quand le carreleur intervient. Pas de temps mort, pas de conflits sur le chantier.
                     </p>
                 </div>
 
@@ -359,7 +397,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Prix Compétitifs</h3>
                     <p class="text-stone-600 leading-relaxed">
-                        Vous ne payez pas la marge d'une entreprise générale. Chaque artisan facture sa prestation réelle en direct.
+                        Vous ne payez pas la marge d'une entreprise générale. Chaque artisan facture sa prestation réelle en direct. Transparence totale.
                     </p>
                 </div>
 
@@ -369,18 +407,19 @@
                     </div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Sérénité Totale</h3>
                     <p class="text-stone-600 leading-relaxed">
-                        Chaque artisan engage son nom et sa propre assurance décennale. Ils ne sont pas de simples sous-traitants, mais des partenaires.
+                        Chaque artisan engage son nom et sa propre assurance décennale. Ils ne sont pas de simples sous-traitants, mais des partenaires fiables.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Étapes -->
     <section class="py-24 bg-stone-50" id="etapes">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <span class="text-warmgreen-600 font-bold tracking-wide uppercase text-sm">Processus simplifié</span>
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mt-2">Votre chantier en 4 étapes</h2>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mt-2">Votre chantier de rénovation en 4 étapes</h2>
             </div>
 
             <div class="relative">
@@ -390,39 +429,39 @@
                     <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
                         <div class="md:w-1/2 text-right md:pr-12 order-2 md:order-1">
                             <h3 class="text-xl font-bold text-stone-900">1. Décrivez votre projet</h3>
-                            <p class="text-stone-600 mt-2">Remplissez le formulaire unique. C'est le point d'entrée pour alerter tous les corps de métier nécessaires.</p>
+                            <p class="text-stone-600 mt-2">Remplissez le formulaire unique. C'est le point d'entrée pour alerter tous les corps de métier nécessaires (maçon, électricien, plombier...).</p>
                         </div>
                         <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">1</div>
                         <div class="md:w-1/2 md:pl-12 order-1 md:order-2">
-                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Prise+de+contact" alt="Contact" class="rounded-2xl shadow-md rotate-2 hover:rotate-0 transition-transform w-full md:w-auto">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Prise+de+contact" alt="Prise de contact travaux rénovation" loading="lazy" class="rounded-2xl shadow-md rotate-2 hover:rotate-0 transition-transform w-full md:w-auto">
                         </div>
                     </div>
 
                     <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
                         <div class="md:w-1/2 md:pr-12 order-1">
-                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Visite+Technique" alt="Visite" class="rounded-2xl shadow-md -rotate-2 hover:rotate-0 transition-transform ml-auto w-full md:w-auto">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Visite+Technique" alt="Visite technique chantier Perpignan" loading="lazy" class="rounded-2xl shadow-md -rotate-2 hover:rotate-0 transition-transform ml-auto w-full md:w-auto">
                         </div>
                         <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-warmgreen-600 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">2</div>
                         <div class="md:w-1/2 md:pl-12 order-2">
                             <h3 class="text-xl font-bold text-stone-900">2. Visite & Devis Directs</h3>
-                            <p class="text-stone-600 mt-2">Nous organisons une visite groupée. Sous 5 jours, vous recevez les devis détaillés de chaque artisan, sans commission.</p>
+                            <p class="text-stone-600 mt-2">Nous organisons une visite groupée sur place. Sous 5 jours, vous recevez les devis détaillés de chaque artisan, sans commission.</p>
                         </div>
                     </div>
 
                     <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
                         <div class="md:w-1/2 text-right md:pr-12 order-2 md:order-1">
                             <h3 class="text-xl font-bold text-stone-900">3. Planification</h3>
-                            <p class="text-stone-600 mt-2">Nous validons ensemble le calendrier. Les artisans se coordonnent entre eux pour les dates d'intervention.</p>
+                            <p class="text-stone-600 mt-2">Nous validons ensemble le calendrier des travaux. Les artisans se coordonnent entre eux pour les dates d'intervention.</p>
                         </div>
                         <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">3</div>
                         <div class="md:w-1/2 md:pl-12 order-1 md:order-2">
-                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Planning" alt="Planning" class="rounded-2xl shadow-md rotate-1 hover:rotate-0 transition-transform w-full md:w-auto">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Planning" alt="Planning coordination travaux" loading="lazy" class="rounded-2xl shadow-md rotate-1 hover:rotate-0 transition-transform w-full md:w-auto">
                         </div>
                     </div>
 
                     <div class="relative flex flex-col md:flex-row items-center gap-8 reveal">
                         <div class="md:w-1/2 md:pr-12 order-1">
-                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Travaux+%26+Livraison" alt="Travaux" class="rounded-2xl shadow-md -rotate-1 hover:rotate-0 transition-transform ml-auto w-full md:w-auto">
+                             <img src="https://placehold.co/400x250/e7e5e4/292524?text=Travaux+%26+Livraison" alt="Livraison chantier rénovation" loading="lazy" class="rounded-2xl shadow-md -rotate-1 hover:rotate-0 transition-transform ml-auto w-full md:w-auto">
                         </div>
                         <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-warmgreen-700 text-white flex items-center justify-center font-bold z-10 border-4 border-stone-50 hidden md:flex">4</div>
                         <div class="md:w-1/2 md:pl-12 order-2">
@@ -435,14 +474,15 @@
         </div>
     </section>
 
+    <!-- Équipe (Artisans) -->
     <section class="py-24 bg-white" id="artisans">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mb-8 reveal">L'Équipe Locale</h2>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-stone-900 mb-8 reveal">Nos Artisans Partenaires dans le 66</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                        <img src="logo-macon.jpg" alt="Logo Renov Style" class="transition-transform duration-500 group-hover:scale-105">
+                        <img src="logo-macon.jpg" alt="Logo Renov Style - Maçonnerie Rivesaltes" loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Maçonnerie
                         </div>
@@ -451,7 +491,7 @@
                              <a href="tel:0603652961" class="px-4 py-2 bg-white text-warmgreen-700 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
                                 <i data-lucide="phone" class="w-4 h-4"></i> 06 03 65 29 61
                              </a>
-                             <a href="https://www.renov-style-machet-maxime.fr/" target="_blank" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                             <a href="https://www.renov-style-machet-maxime.fr/" target="_blank" rel="noopener" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
                                 <i data-lucide="globe" class="w-4 h-4"></i> Site Web
                              </a>
                         </div>
@@ -467,7 +507,7 @@
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-100" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                        <img src="logo-plomberie.jpg" alt="Logo Joseph Gamiz" class="transition-transform duration-500 group-hover:scale-105">
+                        <img src="logo-plomberie.jpg" alt="Logo Joseph Gamiz - Plombier Canet" loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Plomberie
                         </div>
@@ -489,7 +529,7 @@
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-200" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-800 text-white">
-                         <img src="logo-elec.jpg" alt="Logo DVE" class="transition-transform duration-500 group-hover:scale-105">
+                         <img src="logo-elec.jpg" alt="Logo DVE - Électricien Bages" loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Électricité
                         </div>
@@ -498,7 +538,7 @@
                              <a href="tel:0617097472" class="px-4 py-2 bg-white text-warmgreen-700 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
                                 <i data-lucide="phone" class="w-4 h-4"></i> 06 17 09 74 72
                              </a>
-                             <a href="https://www.electricite-sarl-dve.fr/" target="_blank" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                             <a href="https://www.electricite-sarl-dve.fr/" target="_blank" rel="noopener" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
                                 <i data-lucide="globe" class="w-4 h-4"></i> Site Web
                              </a>
                         </div>
@@ -514,7 +554,7 @@
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-300" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                         <img src="logo-peinture.jpg" alt="Logo Breijo" class="transition-transform duration-500 group-hover:scale-105">
+                         <img src="logo-peinture.jpg" alt="Logo Breijo - Peintre Villeneuve" loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Finition & Déco
                         </div>
@@ -523,7 +563,7 @@
                              <a href="tel:0614593901" class="px-4 py-2 bg-white text-warmgreen-700 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
                                 <i data-lucide="phone" class="w-4 h-4"></i> 06 14 59 39 01
                              </a>
-                             <a href="https://www.breijopeinture.fr/" target="_blank" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
+                             <a href="https://www.breijopeinture.fr/" target="_blank" rel="noopener" class="px-4 py-2 bg-stone-900 text-white rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg">
                                 <i data-lucide="globe" class="w-4 h-4"></i> Site Web
                              </a>
                         </div>
@@ -539,7 +579,7 @@
 
                 <div class="group bg-white rounded-2xl p-2 border border-stone-200 hover-card cursor-pointer reveal delay-400" onclick="toggleContact(this)">
                     <div class="h-48 rounded-xl overflow-hidden relative mb-4 flex items-center justify-center p-4 logo-container bg-stone-50">
-                         <img src="logo-archi.jpg" alt="Logo Des 2 Mains" class="transition-transform duration-500 group-hover:scale-105">
+                         <img src="logo-archi.jpg" alt="Logo Des 2 Mains - Architecte Intérieur Perpignan" loading="lazy" class="transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-xs font-bold text-stone-800 border border-white">
                             Conception
                         </div>
@@ -551,7 +591,7 @@
                              <a href="tel:0683563784" class="px-4 py-1.5 bg-white text-warmgreen-700 rounded-full font-bold text-xs hover:scale-105 transition-transform flex items-center gap-2 shadow-lg w-max">
                                 <i data-lucide="phone" class="w-3 h-3"></i> David : 06 83 56 37 84
                              </a>
-                             <a href="https://architecte-interieur-perpignan.com/des-2-mains/" target="_blank" class="px-4 py-1.5 bg-stone-900 text-white rounded-full font-bold text-xs hover:scale-105 transition-transform flex items-center gap-2 shadow-lg mt-1">
+                             <a href="https://architecte-interieur-perpignan.com/des-2-mains/" target="_blank" rel="noopener" class="px-4 py-1.5 bg-stone-900 text-white rounded-full font-bold text-xs hover:scale-105 transition-transform flex items-center gap-2 shadow-lg mt-1">
                                 <i data-lucide="globe" class="w-3 h-3"></i> Site Web
                              </a>
                         </div>
@@ -568,17 +608,19 @@
         </div>
     </section>
 
+    <!-- Réalisations (Mise à jour avec la liste des artisans) -->
     <section class="py-24 bg-stone-900 text-white" id="realisations">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="font-display text-3xl md:text-4xl font-bold mb-12">Nos réalisations en détail</h2>
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-12">Nos chantiers de rénovation dans les P.O.</h2>
             <div class="space-y-16">
+                <!-- Projet 1 -->
                 <div class="reveal">
                     <div class="grid md:grid-cols-3 gap-6 items-start">
                         <div class="md:col-span-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('projet1.jpg')">
-                            <img src="projet1.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img src="projet1.jpg" alt="Rénovation appart hôtel Collioure avant après" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full pointer-events-none">
                                 <h3 class="font-display text-2xl font-bold">Appart-Hôtels à Collioure</h3>
-                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Collioure</p>
+                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Rénovation à Collioure</p>
                             </div>
                         </div>
                         <div class="flex flex-col h-full justify-between gap-4">
@@ -588,43 +630,44 @@
                                     Modernisation complète d'un plateau. Optimisation des espaces, isolation phonique renforcée.
                                 </p>
                                 <div class="mt-4 pt-4 border-t border-stone-700">
-                                    <p class="text-xs text-stone-500 uppercase">Budget</p>
-                                    <p class="font-bold text-white">80 000€ / appart</p>
+                                    <p class="text-xs text-stone-500 uppercase text-warmgreen-500 font-bold mb-1">Sont intervenus :</p>
+                                    <p class="font-bold text-white text-sm leading-relaxed">Maçon, peintre, menuisier, plombier, électricien.</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 overflow-x-auto pb-2 hide-scrollbar snap-x">
-                                <img src="projet1.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
-                                <img src="projet2.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
-                                <img src="projet3.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="projet1.jpg" alt="Détail rénovation 1" onclick="openLightbox(this.src)" loading="lazy" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="projet2.jpg" alt="Détail rénovation 2" onclick="openLightbox(this.src)" loading="lazy" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="projet3.jpg" alt="Détail rénovation 3" onclick="openLightbox(this.src)" loading="lazy" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Projet 2 -->
                 <div class="reveal delay-100">
                     <div class="grid md:grid-cols-3 gap-6 items-start">
                          <div class="md:col-span-2 md:order-2 aspect-[16/10] rounded-3xl overflow-hidden relative group cursor-zoom-in border border-stone-700" onclick="openLightbox('EXEMPLES PROJETS REELS.jpg')">
-                            <img src="EXEMPLES PROJETS REELS.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img src="EXEMPLES PROJETS REELS.jpg" alt="Rénovation complète maison Perpignan" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full pointer-events-none">
                                 <h3 class="font-display text-2xl font-bold">Rénovation complète Maison</h3>
-                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Perpignan</p>
+                                <p class="text-warmgreen-400 text-sm font-medium mt-1">Chantier à Perpignan</p>
                             </div>
                         </div>
                         <div class="flex flex-col h-full justify-between gap-4 md:order-1">
                             <div class="p-6 bg-stone-800 rounded-2xl border border-stone-700">
                                 <h4 class="font-bold mb-2 text-white">Le projet</h4>
                                 <p class="text-sm text-stone-400 leading-relaxed">
-                                    Rénovation complète d'une maison avec création d'un nouvel étage sous combe.
+                                    Rénovation complète d'une maison avec création d'un nouvel étage sous comble.
                                 </p>
                                 <div class="mt-4 pt-4 border-t border-stone-700">
-                                    <p class="text-xs text-stone-500 uppercase">Budget</p>
-                                    <p class="font-bold text-white">130 000€</p>
+                                    <p class="text-xs text-stone-500 uppercase text-warmgreen-500 font-bold mb-1">Sont intervenus :</p>
+                                    <p class="font-bold text-white text-sm leading-relaxed">Maçon, peintre, menuisier, plombier, électricien, ferronnier.</p>
                                 </div>
                             </div>
                              <div class="flex gap-3 overflow-x-auto pb-2 hide-scrollbar snap-x">
-                                <img src="avantapres1.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
-                                <img src="avantapres2.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
-                                <img src="avantapres3.jpg" onclick="openLightbox(this.src)" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="avantapres1.jpg" alt="Avant après travaux 1" onclick="openLightbox(this.src)" loading="lazy" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="avantapres2.jpg" alt="Avant après travaux 2" onclick="openLightbox(this.src)" loading="lazy" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
+                                <img src="avantapres3.jpg" alt="Avant après travaux 3" onclick="openLightbox(this.src)" loading="lazy" class="zoomable w-28 h-28 rounded-xl object-cover flex-shrink-0 snap-start border border-stone-700 hover:border-warmgreen-500 transition-colors cursor-pointer">
                             </div>
                         </div>
                     </div>
@@ -633,9 +676,10 @@
         </div>
     </section>
 
+    <!-- Avis Clients -->
     <section class="py-20 bg-stone-50 border-b border-stone-200" id="avis">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="font-display text-3xl font-bold text-center mb-12 text-stone-900">Ce que disent nos clients</h2>
+            <h2 class="font-display text-3xl font-bold text-center mb-12 text-stone-900">Avis Clients : Rénovation Perpignan & Alentours</h2>
             <div class="grid md:grid-cols-3 gap-8 items-start">
                 
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 reveal flex flex-col">
@@ -703,6 +747,7 @@
         </div>
     </section>
 
+    <!-- Contact Form (Formspree Ready) -->
     <section class="py-24 relative overflow-hidden bg-white" id="contact">
         <div class="max-w-xl mx-auto px-6 relative z-10">
             <div class="text-center mb-12 reveal">
@@ -746,6 +791,7 @@
         </div>
     </section>
 
+    <!-- FAQ -->
     <section class="py-20 bg-stone-50 border-t border-stone-200" id="faq">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="font-display text-3xl font-bold text-center mb-12 text-stone-900">Questions Fréquentes</h2>
@@ -790,6 +836,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-white border-t border-stone-200 pt-16 pb-8">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-8 mb-8 text-center md:text-left">
@@ -815,6 +862,7 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
         lucide.createIcons();
 
@@ -914,7 +962,7 @@
             }
         }
 
-        /* --- Form Submission --- */
+        /* --- Form Submission AJAX (Sans rechargement) --- */
         const form = document.getElementById("contact-form");
         async function handleSubmit(event) {
             event.preventDefault();
