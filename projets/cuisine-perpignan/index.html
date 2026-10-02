@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cuisine ouverte Perpignan</title>
+<meta name="description" content="Rénovation d'un appartement à Perpignan : la cuisine s'ouvre sur le séjour. Relevé 3D, plans, implantation, électricité et variantes de cloison vitrée. Assistance à maîtrise d'ouvrage BâtiCollectif 66.">
+<meta property="og:title" content="Cuisine ouverte · Perpignan · BâtiCollectif 66">
+<meta property="og:description" content="Relevé, plans et variantes d'une cuisine ouverte sur le séjour, en ambiance cottage méditerranéen.">
+<meta property="og:image" content="apercu-3d-cuisine.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Mise en page : planches d'archi en cyanotype, empilées comme un projet Behance ; cartouche en guise de fiche projet. */
+:root{
+  --ink:#123a78;        /* bleu de tirage */
+  --ink-deep:#0c2c5f;   /* bandeaux */
+  --line:#f2f6ff;       /* trait blanc */
+  --mute:#a9bde0;       /* texte secondaire */
+  --rule:rgba(242,246,255,.28);
+  --grid:rgba(242,246,255,.055);
+  --chalk:#ffd36b;      /* ouvrage créé, repères */
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{
+  margin:0;background-color:var(--ink);color:var(--line);font-family:var(--body);font-size:17px;line-height:1.6;
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+    linear-gradient(rgba(242,246,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(242,246,255,.025) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--chalk);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:max(16px,4vw)}
+
+/* barre */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ink-deep) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.bar a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.bar .brand{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:none}
+.bar nav{display:flex;gap:20px;flex-wrap:wrap}
+.bar nav a{color:var(--mute)}
+.bar nav a:hover{color:var(--line)}
+@media (max-width:760px){.bar nav .opt{display:none}}
+
+/* couverture */
+.cover{padding-block:56px 24px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 18px}
+h1{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(40px,7.4vw,104px);line-height:.92;letter-spacing:-.02em;margin:0;text-transform:uppercase;text-wrap:balance}
+h1 em{font-style:normal;font-stretch:62%;font-weight:300;letter-spacing:0}
+.lede{max-width:60ch;font-size:clamp(17px,1.6vw,20px);color:var(--mute);margin:26px 0 0}
+.lede strong{color:var(--line);font-weight:500}
+
+.sheet{position:relative;border:1px solid var(--rule);margin-top:40px;background:rgba(12,44,95,.35)}
+.sheet::before{content:"";position:absolute;inset:8px;border:1px solid var(--rule);pointer-events:none}
+.sheet-body{display:grid;grid-template-columns:minmax(0,1fr) 300px}
+.sheet-fig{padding:clamp(16px,3vw,40px);min-width:0}
+.cartouche{border-left:1px solid var(--rule);display:grid;grid-auto-rows:min-content;font-family:var(--mono);font-size:12px}
+.cartouche div{padding:12px 18px;border-bottom:1px solid var(--rule)}
+.cartouche dt{color:var(--mute);letter-spacing:.1em;text-transform:uppercase;font-size:10.5px}
+.cartouche dd{margin:2px 0 0;font-size:13.5px;color:var(--line)}
+.cartouche .ref{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:40px;line-height:1;margin-top:6px}
+.cartouche div:last-child{border-bottom:0}
+@media (max-width:900px){.sheet-body{grid-template-columns:1fr}.cartouche{border-left:0;border-top:1px solid var(--rule);grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.cartouche div{border-right:1px solid var(--rule)}}
+
+/* chiffres */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--rule);margin-top:56px}
+.facts div{padding:22px 20px;border-right:1px solid var(--rule)}
+.facts div:last-child{border-right:0}
+.facts b{display:block;font-family:var(--display);font-stretch:125%;font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1;font-variant-numeric:tabular-nums}
+.facts span{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--mute);margin-top:10px;text-transform:uppercase}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
+
+/* modules */
+.mod{padding-block:clamp(64px,9vw,120px) 0}
+.mod-head{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:start;margin-bottom:36px}
+.plate{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:44px;line-height:1;color:var(--chalk)}
+.plate small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.14em;color:var(--mute);margin-top:8px;font-stretch:100%}
+h2{font-family:var(--display);font-stretch:118%;font-weight:700;font-size:clamp(28px,3.6vw,48px);line-height:1.02;margin:0;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+.mod-head p{max-width:62ch;color:var(--mute);margin:14px 0 0}
+@media (max-width:700px){.mod-head{grid-template-columns:1fr;gap:12px}}
+
+.split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.split > *{min-width:0}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.panel{border:1px solid var(--rule);padding:clamp(12px,2.4vw,28px);background:rgba(12,44,95,.3)}
+
+h3{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.notes{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:n}
+.notes li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;font-size:15.5px}
+.notes li::before{counter-increment:n;content:counter(n);width:26px;height:26px;border:1px solid var(--chalk);color:var(--chalk);border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px;margin-top:1px}
+
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+th{font-weight:400;text-align:left;color:var(--mute);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:0 10px 8px 0;border-bottom:1px solid var(--rule)}
+td{padding:8px 10px 8px 0;border-bottom:1px solid rgba(242,246,255,.12);vertical-align:top}
+td:first-child{color:var(--chalk);white-space:nowrap}
+td.n{text-align:right;white-space:nowrap}
+th.n{text-align:right}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--mono);font-size:11.5px;color:var(--mute);margin-top:18px}
+.legend i{display:inline-block;width:22px;height:10px;vertical-align:-1px;margin-right:8px}
+.lg-w{background:var(--line)}
+.lg-d{border:1px dashed var(--line);background:repeating-linear-gradient(45deg,transparent 0 3px,rgba(242,246,255,.4) 3px 4px)}
+.lg-c{background:var(--chalk)}
+.lg-g{border-block:1px solid var(--line);height:6px!important}
+.lg-x{border-top:1px dashed var(--chalk);height:0!important;vertical-align:3px!important}
+
+/* bascule de phases */
+.toggle{display:inline-flex;border:1px solid var(--rule);margin-bottom:18px;flex-wrap:wrap}
+.toggle button{appearance:none;background:none;border:0;color:var(--mute);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer}
+.toggle button + button{border-left:1px solid var(--rule)}
+.toggle button[aria-pressed="true"]{background:var(--line);color:var(--ink)}
+.toggle button:hover:not([aria-pressed="true"]){color:var(--line)}
+
+/* images */
+figure{margin:0}
+.shot{position:relative;border:1px solid var(--rule);padding:8px;background:rgba(12,44,95,.4)}
+.shot img{display:block;width:100%;height:auto}
+figcaption{font-family:var(--mono);font-size:11.5px;color:var(--mute);margin-top:10px;letter-spacing:.02em}
+.fullbleed{margin-top:clamp(32px,5vw,56px)}
+
+.variants{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,48px)}
+.variants > article{min-width:0;display:grid;gap:20px;align-content:start}
+.variants h4{font-family:var(--display);font-stretch:115%;font-weight:700;font-size:24px;text-transform:uppercase;margin:0;line-height:1.1}
+.variants h4 span{display:block;font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.14em;color:var(--chalk);margin-bottom:8px;font-stretch:100%}
+.variants p{margin:0;color:var(--mute);font-size:15.5px}
+.variants .row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:start}
+.spec{font-family:var(--mono);font-size:12px;display:grid;gap:6px;margin:0}
+.spec div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(242,246,255,.12);padding-bottom:6px}
+.spec dt{color:var(--mute)}
+.spec dd{margin:0;text-align:right}
+@media (max-width:900px){.variants{grid-template-columns:1fr}}
+@media (max-width:420px){.variants .row{grid-template-columns:1fr}.variants .row svg{max-width:180px}}
+
+/* matières */
+.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.sw{display:grid;gap:10px}
+.sw i{display:block;aspect-ratio:1;border:1px solid var(--rule)}
+.sw b{font-weight:600;font-size:14px;line-height:1.2}
+.sw span{font-family:var(--mono);font-size:11px;color:var(--mute);line-height:1.4}
+@media (max-width:900px){.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* méthode */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule)}
+.steps div{padding:22px 20px 0 0}
+.steps b{font-family:var(--mono);font-weight:500;font-size:11.5px;color:var(--chalk);letter-spacing:.1em}
+.steps h5{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:19px;text-transform:uppercase;margin:8px 0 6px}
+.steps p{margin:0;color:var(--mute);font-size:14.5px}
+@media (max-width:800px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:12px}}
+
+/* fin */
+.end{margin-top:clamp(80px,10vw,140px);background:var(--ink-deep);border-top:1px solid var(--rule)}
+.end .wrap{padding-block:64px 40px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:end}
+.end h2{font-size:clamp(30px,4.2vw,56px)}
+.end p{color:var(--mute);margin:16px 0 0;max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border:1px solid var(--line);text-decoration:none;font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.btn.fill{background:var(--line);color:var(--ink)}
+.btn:hover{background:var(--chalk);border-color:var(--chalk);color:var(--ink)}
+.fine{grid-column:1/-1;font-family:var(--mono);font-size:11px;color:var(--mute);border-top:1px solid var(--rule);padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:800px){.end .wrap{grid-template-columns:1fr}}
+
+/* ---------- dessin SVG ---------- */
+svg.plan,svg.elev{display:block;width:100%;height:auto;overflow:hidden}
+svg *{vector-effect:non-scaling-stroke}
+.w{fill:var(--line)}
+.wo{fill:none;stroke:var(--line);stroke-width:1.2}
+.gl{stroke:var(--line);stroke-width:.8}
+.thin{fill:none;stroke:var(--line);stroke-width:.8;opacity:.75}
+.dash{stroke-dasharray:4 3}
+.niche{fill:none;stroke:var(--chalk);stroke-width:1;stroke-dasharray:3 2}
+.allege{fill:rgba(242,246,255,.18);stroke:var(--line);stroke-width:.8}
+.demo{fill:url(#hx);stroke:var(--line);stroke-width:1;stroke-dasharray:3 2}
+.hatch{stroke:var(--line);stroke-width:.7;opacity:.6}
+.created{fill:var(--chalk)}
+.fu{fill:rgba(242,246,255,.06);stroke:var(--line);stroke-width:.9}
+.lamp{fill:rgba(255,211,107,.16);stroke:var(--chalk);stroke-width:.8}
+.dl{stroke:var(--mute);stroke-width:.7}
+.dt{stroke:var(--line);stroke-width:1.2}
+.de{stroke:var(--mute);stroke-width:.5;opacity:.6}
+.td{fill:var(--line);font-family:var(--mono)}
+.tr{fill:var(--line);font-family:var(--display);font-weight:600;font-stretch:118%}
+.ta{fill:var(--mute);font-family:var(--mono)}
+.tn{fill:var(--line);font-family:var(--mono);font-weight:500;text-anchor:middle}
+.te{fill:var(--chalk);font-family:var(--mono)}
+.tc{fill:var(--ink);stroke:var(--line);stroke-width:.9}
+.hot .tc{stroke:var(--chalk);stroke-width:1.3}
+.hot .tn{fill:var(--chalk)}
+.nl{stroke:var(--line);stroke-width:1}
+.na{fill:var(--line)}
+.sb{fill:var(--line)}
+.sb2{fill:none;stroke:var(--line);stroke-width:.8}
+.el{fill:none;stroke:var(--chalk);stroke-width:1.2}
+.eld{fill:var(--chalk)}
+.wire{fill:none;stroke:var(--chalk);stroke-width:.8;stroke-dasharray:4 3;opacity:.75}
+.dim-furn{opacity:.45}
+.elwall{fill:url(#hx);stroke:var(--line);stroke-width:.8}
+.frame{fill:none;stroke:var(--line);stroke-width:2.4}
+.mull{stroke:var(--line);stroke-width:2}
+.glass{fill:rgba(169,189,224,.14)}
+.oak{fill:none;stroke:var(--chalk);stroke-width:2.6}
+.flute{stroke:var(--line);stroke-width:.6;opacity:.6}
+
+.phases g{transition:opacity .35s ease}
+.phases[data-state="old"] .ly-demo,.phases[data-state="old"] .ly-new,.phases[data-state="old"] .ly-furn,.phases[data-state="old"] .ly-num{opacity:0}
+.phases[data-state="demo"] .ly-old,.phases[data-state="demo"] .ly-furn{opacity:0}
+.phases[data-state="new"] .ly-old,.phases[data-state="new"] .ly-demo,.phases[data-state="new"] .ly-num,.phases[data-state="new"] .ly-kit{opacity:0}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">BâtiCollectif 66</a>
+    <nav aria-label="Sections du projet">
+      <a class="opt" href="#releve">Relevé</a>
+      <a class="opt" href="#projet">Projet</a>
+      <a class="opt" href="#variantes">Variantes</a>
+      <a href="../../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="cover wrap">
+    <p class="kicker">Rénovation intérieure · Perpignan (66) · 2026</p>
+    <h1>Cuisine ouverte <em>sur le séjour</em></h1>
+    <p class="lede">Dans un appartement du centre de Perpignan, une cloison et une porte séparaient la cuisine du séjour. <strong>En les déposant, la cuisine devient une pièce de vie de 40 m²</strong>, organisée autour d'une table de ferme en chêne, dans une ambiance cottage méditerranéen.</p>
+
+    <div class="sheet">
+      <div class="sheet-body">
+        <div class="sheet-fig"><svg class="plan cover-plan" viewBox="-.5 -.6 9.9 8.4" role="img" aria-label="Plan du projet meublé"><defs><pattern id="hx" patternUnits="userSpaceOnUse" width=".09" height=".09" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2=".09" class="hatch"/></pattern></defs><line x1="0.1" y1="0.77" x2="3.96" y2="0.77" class="thin dash"/><rect x="3.96" y="0" width="4.31" height="0.1" class="w" /><rect x="8.17" y="0" width="0.1" height="7.16" class="w" /><rect x="0" y="7.06" width="0.98" height="0.1" class="w" /><rect x="3.39" y="7.06" width="1.21" height="0.1" class="w" /><rect x="6.9" y="7.06" width="1.37" height="0.1" class="w" /><rect x="0" y="0.77" width="0.1" height="6.39" class="w" /><rect x="3.96" y="0" width="0.1" height="0.92" class="w" /><rect x="3.96" y="2.05" width="0.1" height="0.11" class="w" /><rect x="3.96" y="5.34" width="0.1" height="0.57" class="w" /><rect x="3.96" y="6.97" width="0.1" height="0.09" class="w" /><rect x="0.1" y="2.06" width="3.1" height="0.1" class="w" /><rect x="6.77" y="5.34" width="1.4" height="0.1" class="w" /><rect x="4.06" y="0.55" width="0.32" height="0.32" class="w" /><rect x="6.83" y="-0.17" width="1.07" height="0.27" class="niche" /><line x1="0.98" y1="7.09" x2="3.39" y2="7.09" class="gl"/><line x1="0.98" y1="7.13" x2="3.39" y2="7.13" class="gl"/><line x1="0.98" y1="7.06" x2="0.98" y2="7.16" class="wo"/><line x1="3.39" y1="7.06" x2="3.39" y2="7.16" class="wo"/><line x1="4.6" y1="7.09" x2="6.9" y2="7.09" class="gl"/><line x1="4.6" y1="7.13" x2="6.9" y2="7.13" class="gl"/><line x1="4.6" y1="7.06" x2="4.6" y2="7.16" class="wo"/><line x1="6.9" y1="7.06" x2="6.9" y2="7.16" class="wo"/><line x1="4.06" y1="5.37" x2="6.77" y2="5.37" class="gl"/><line x1="4.06" y1="5.41" x2="6.77" y2="5.41" class="gl"/><line x1="4.06" y1="5.34" x2="4.06" y2="5.44" class="wo"/><line x1="6.77" y1="5.34" x2="6.77" y2="5.44" class="wo"/><line x1="4.6" y1="7.2" x2="6.9" y2="7.2" class="thin dash"/><rect x="3.1" y="2.16" width="0.1" height="0.3" class="w" /><rect x="3.1" y="2.46" width="0.1" height="0.32" class="created" /><g class="furn-g"><rect x="0.1" y="2.16" width="0.65" height="0.6" class="fu" /><rect x="0.75" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="0.75" y1="2.16" x2="1.337" y2="2.78" class="thin"/><line x1="1.337" y1="2.16" x2="0.75" y2="2.78" class="thin"/><rect x="1.337" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.337" y1="2.16" x2="1.925" y2="2.78" class="thin"/><line x1="1.925" y1="2.16" x2="1.337" y2="2.78" class="thin"/><rect x="1.925" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.925" y1="2.16" x2="2.513" y2="2.78" class="thin"/><line x1="2.513" y1="2.16" x2="1.925" y2="2.78" class="thin"/><rect x="2.513" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="2.513" y1="2.16" x2="3.1" y2="2.78" class="thin"/><line x1="3.1" y1="2.16" x2="2.513" y2="2.78" class="thin"/><rect x="0.1" y="2.76" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="3.36" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="3.96" width="0.65" height="1.2" class="fu" /><circle cx="0.3" cy="4.31" r="0.09" class="thin"/><circle cx="0.56" cy="4.31" r="0.09" class="thin"/><circle cx="0.3" cy="4.81" r="0.09" class="thin"/><circle cx="0.56" cy="4.81" r="0.09" class="thin"/><rect x="0.1" y="5.16" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="5.76" width="0.65" height="0.6" class="fu" /><rect x="0.2" y="5.86" width="0.45" height="0.4" class="thin" rx=".05"/><rect x="0.1" y="6.36" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="4.11" width="0.48" height="0.9" class="thin dash" /><rect x="0.1" y="5.16" width="0.36" height="1.2" class="thin dash" /><rect x="1.86" y="3.72" width="1" height="2.4" class="fu" /><rect x="1.4" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><g transform="rotate(-8 6.6 6.0)"><rect x="5.74" y="5.68" width="1.72" height="0.72" class="fu" /></g></g><circle cx="2.36" cy="4.15" r="0.16" class="lamp"/><circle cx="2.36" cy="4.92" r="0.16" class="lamp"/><circle cx="2.36" cy="5.69" r="0.16" class="lamp"/><text x="1.95" y="1.42" class="tr" font-size="0.2" text-anchor="middle" letter-spacing=".06">ENTRÉE</text><text x="6.12" y="2.9" class="tr" font-size="0.26" text-anchor="middle" letter-spacing=".06">SÉJOUR</text><text x="6.12" y="6.55" class="tr" font-size="0.2" text-anchor="middle" letter-spacing=".06">BALCON</text><g class="north"><line x1="9.072" y1="6.974" x2="8.828" y2="6.426" class="nl"/><path d="M8.828 6.426 l-0.009 0.201 l0.164 -0.073z" class="na"/><text x="8.785" y="6.4" class="tr" font-size="0.2" text-anchor="middle">N</text></g></svg></div>
+        <dl class="cartouche">
+          <div><dt>Projet</dt><dd>Cuisine ouverte, appartement 1er étage</dd></div>
+          <div><dt>Lieu</dt><dd>Perpignan, Pyrénées-Orientales</dd></div>
+          <div><dt>Surface</dt><dd>Cuisine 18,59 m² + séjour 21,52 m²</dd></div>
+          <div><dt>Mission</dt><dd>Assistance à maîtrise d'ouvrage</dd></div>
+          <div><dt>Relevé</dt><dd>Polycam + scan 3D (± 2 cm)</dd></div>
+          <div><dt>Date</dt><dd>Septembre – octobre 2026</dd></div>
+          <div><dt>Planche</dt><dd class="ref">P00</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div><b>40 m²</b><span>de pièce de vie réunie</span></div>
+      <div><b>4,90 m</b><span>de linéaire bas, mur ouest</span></div>
+      <div><b>2,40 m</b><span>table de ferme, 8 couverts</span></div>
+      <div><b>2</b><span>variantes de cloison vitrée</span></div>
+    </div>
+  </section>
+
+  <section class="mod wrap" id="releve">
+    <div class="mod-head">
+      <div class="plate">EX<small>ÉTAT EXISTANT</small></div>
+      <div>
+        <h2>Le relevé avant travaux</h2>
+        <p>L'appartement a été relevé au téléphone avec Polycam, puis complété par un scan 3D pour les hauteurs, la niche et la baie du balcon. Hauteur sous plafond mesurée : 2,50 m. Les cotes restent à confirmer au laser avant toute commande sur mesure.</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="panel"><svg class="plan" viewBox="-1.25 -1.15 10.4 9.7" role="img" aria-label="Plan coté de l'état existant, 1er étage"><defs><pattern id="hx" patternUnits="userSpaceOnUse" width=".09" height=".09" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2=".09" class="hatch"/></pattern></defs><line x1="0.1" y1="0.77" x2="3.96" y2="0.77" class="thin dash"/><text x="1.95" y="0.66" class="ta" font-size="0.12" text-anchor="middle">limite du relevé, l'entrée se poursuit</text><rect x="3.96" y="0" width="4.31" height="0.1" class="w" /><rect x="8.17" y="0" width="0.1" height="7.16" class="w" /><rect x="0" y="7.06" width="0.98" height="0.1" class="w" /><rect x="3.39" y="7.06" width="1.21" height="0.1" class="w" /><rect x="6.9" y="7.06" width="1.37" height="0.1" class="w" /><rect x="0" y="0.77" width="0.1" height="6.39" class="w" /><rect x="3.96" y="0" width="0.1" height="0.92" class="w" /><rect x="3.96" y="2.05" width="0.1" height="0.11" class="w" /><rect x="3.96" y="5.34" width="0.1" height="0.57" class="w" /><rect x="3.96" y="6.97" width="0.1" height="0.09" class="w" /><rect x="0.1" y="2.06" width="3.1" height="0.1" class="w" /><rect x="6.77" y="5.34" width="1.4" height="0.1" class="w" /><rect x="3.96" y="2.16" width="0.1" height="0.8" class="w" /><rect x="3.96" y="4.85" width="0.1" height="0.49" class="w" /><rect x="4.06" y="0.55" width="0.32" height="0.32" class="w" /><rect x="3.96" y="2.96" width="0.1" height="1.89" class="allege" /><rect x="3.1" y="2.16" width="0.1" height="0.3" class="w" /><rect x="6.83" y="-0.17" width="1.07" height="0.27" class="niche" /><line x1="0.98" y1="7.09" x2="3.39" y2="7.09" class="gl"/><line x1="0.98" y1="7.13" x2="3.39" y2="7.13" class="gl"/><line x1="0.98" y1="7.06" x2="0.98" y2="7.16" class="wo"/><line x1="3.39" y1="7.06" x2="3.39" y2="7.16" class="wo"/><line x1="4.6" y1="7.09" x2="6.9" y2="7.09" class="gl"/><line x1="4.6" y1="7.13" x2="6.9" y2="7.13" class="gl"/><line x1="4.6" y1="7.06" x2="4.6" y2="7.16" class="wo"/><line x1="6.9" y1="7.06" x2="6.9" y2="7.16" class="wo"/><line x1="4.06" y1="5.37" x2="6.77" y2="5.37" class="gl"/><line x1="4.06" y1="5.41" x2="6.77" y2="5.41" class="gl"/><line x1="4.06" y1="5.34" x2="4.06" y2="5.44" class="wo"/><line x1="6.77" y1="5.34" x2="6.77" y2="5.44" class="wo"/><line x1="4.6" y1="7.2" x2="6.9" y2="7.2" class="thin dash"/><line x1="3.86" y1="2.16" x2="3.86" y2="2.82" class="wo"/><path d="M3.2 2.16 A.66 .66 0 0 0 3.86 2.82" class="thin dash"/><text x="1.95" y="1.42" class="tr" font-size="0.22" text-anchor="middle" letter-spacing=".06">ENTRÉE</text><text x="1.95" y="1.66" class="ta" font-size="0.14" text-anchor="middle">5,06 m²</text><text x="6.12" y="2.75" class="tr" font-size="0.26" text-anchor="middle" letter-spacing=".06">SÉJOUR</text><text x="6.12" y="3" class="ta" font-size="0.14" text-anchor="middle">21,52 m² · HSP 2,50</text><text x="6.12" y="6.2" class="tr" font-size="0.22" text-anchor="middle" letter-spacing=".06">BALCON</text><text x="6.12" y="6.44" class="ta" font-size="0.14" text-anchor="middle">6,66 m²</text><text x="1.95" y="4.55" class="tr" font-size="0.26" text-anchor="middle" letter-spacing=".06">CUISINE</text><text x="1.95" y="4.8" class="ta" font-size="0.14" text-anchor="middle">18,59 m² · HSP 2,50</text><g class="tag"><circle cx="2.18" cy="6.8" r="0.17" class="tc"/><text x="2.18" y="6.85" class="tn" font-size="0.12" text-anchor="middle">F1</text></g><g class="tag"><circle cx="5.75" cy="6.86" r="0.17" class="tc"/><text x="5.75" y="6.91" class="tn" font-size="0.12" text-anchor="middle">B1</text></g><g class="tag"><circle cx="5.4" cy="5.8" r="0.17" class="tc"/><text x="5.4" y="5.85" class="tn" font-size="0.12" text-anchor="middle">PF</text></g><g class="tag"><circle cx="3.7" cy="6.45" r="0.17" class="tc"/><text x="3.7" y="6.5" class="tn" font-size="0.12" text-anchor="middle">P1</text></g><g class="tag"><circle cx="3.7" cy="3.9" r="0.17" class="tc"/><text x="3.7" y="3.95" class="tn" font-size="0.12" text-anchor="middle">PP</text></g><g class="tag"><circle cx="3.5" cy="2.78" r="0.17" class="tc"/><text x="3.5" y="2.83" class="tn" font-size="0.12" text-anchor="middle">P2</text></g><g class="tag"><circle cx="3.7" cy="1.48" r="0.17" class="tc"/><text x="3.7" y="1.53" class="tn" font-size="0.12" text-anchor="middle">P3</text></g><g class="tag"><circle cx="7.37" cy="0.42" r="0.17" class="tc"/><text x="7.37" y="0.47" class="tn" font-size="0.12" text-anchor="middle">N1</text></g><line x1="0" y1="-0.75" x2="8.27" y2="-0.75" class="dl"/><line x1="-0.06" y1="-0.69" x2="0.06" y2="-0.81" class="dt"/><line x1="0" y1="0" x2="0" y2="-0.83" class="de"/><line x1="8.21" y1="-0.69" x2="8.33" y2="-0.81" class="dt"/><line x1="8.27" y1="0" x2="8.27" y2="-0.83" class="de"/><text x="4.135" y="-0.82" class="td" font-size="0.15" text-anchor="middle">8,26</text><line x1="0" y1="0.45" x2="3.96" y2="0.45" class="dl"/><line x1="-0.06" y1="0.51" x2="0.06" y2="0.39" class="dt"/><line x1="3.9" y1="0.51" x2="4.02" y2="0.39" class="dt"/><text x="1.98" y="0.38" class="td" font-size="0.15" text-anchor="middle">3,86</text><line x1="4.06" y1="-0.42" x2="6.83" y2="-0.42" class="dl"/><line x1="4" y1="-0.36" x2="4.12" y2="-0.48" class="dt"/><line x1="4.06" y1="0" x2="4.06" y2="-0.5" class="de"/><line x1="6.77" y1="-0.36" x2="6.89" y2="-0.48" class="dt"/><line x1="6.83" y1="0" x2="6.83" y2="-0.5" class="de"/><text x="5.445" y="-0.49" class="td" font-size="0.15" text-anchor="middle">2,77</text><line x1="6.83" y1="-0.42" x2="7.9" y2="-0.42" class="dl"/><line x1="6.77" y1="-0.36" x2="6.89" y2="-0.48" class="dt"/><line x1="7.84" y1="-0.36" x2="7.96" y2="-0.48" class="dt"/><text x="7.365" y="-0.49" class="td" font-size="0.15" text-anchor="middle">1,07</text><line x1="0.1" y1="2.4" x2="3.2" y2="2.4" class="dl"/><line x1="0.04" y1="2.46" x2="0.16" y2="2.34" class="dt"/><line x1="3.14" y1="2.46" x2="3.26" y2="2.34" class="dt"/><text x="1.65" y="2.33" class="td" font-size="0.15" text-anchor="middle">3,10</text><line x1="3.2" y1="2.4" x2="3.96" y2="2.4" class="dl"/><line x1="3.14" y1="2.46" x2="3.26" y2="2.34" class="dt"/><line x1="3.9" y1="2.46" x2="4.02" y2="2.34" class="dt"/><text x="3.58" y="2.33" class="td" font-size="0.15" text-anchor="middle">0,76</text><line x1="0" y1="7.62" x2="0.98" y2="7.62" class="dl"/><line x1="-0.06" y1="7.68" x2="0.06" y2="7.56" class="dt"/><line x1="0" y1="7.16" x2="0" y2="7.7" class="de"/><line x1="0.92" y1="7.68" x2="1.04" y2="7.56" class="dt"/><line x1="0.98" y1="7.16" x2="0.98" y2="7.7" class="de"/><text x="0.49" y="7.55" class="td" font-size="0.15" text-anchor="middle">0,88</text><line x1="0.98" y1="7.62" x2="3.39" y2="7.62" class="dl"/><line x1="0.92" y1="7.68" x2="1.04" y2="7.56" class="dt"/><line x1="0.98" y1="7.16" x2="0.98" y2="7.7" class="de"/><line x1="3.33" y1="7.68" x2="3.45" y2="7.56" class="dt"/><line x1="3.39" y1="7.16" x2="3.39" y2="7.7" class="de"/><text x="2.185" y="7.55" class="td" font-size="0.15" text-anchor="middle">2,41</text><line x1="3.39" y1="7.62" x2="3.96" y2="7.62" class="dl"/><line x1="3.33" y1="7.68" x2="3.45" y2="7.56" class="dt"/><line x1="3.39" y1="7.16" x2="3.39" y2="7.7" class="de"/><line x1="3.9" y1="7.68" x2="4.02" y2="7.56" class="dt"/><line x1="3.96" y1="7.16" x2="3.96" y2="7.7" class="de"/><text x="3.675" y="7.55" class="td" font-size="0.15" text-anchor="middle">0,57</text><line x1="4.06" y1="7.62" x2="4.6" y2="7.62" class="dl"/><line x1="4" y1="7.68" x2="4.12" y2="7.56" class="dt"/><line x1="4.06" y1="7.16" x2="4.06" y2="7.7" class="de"/><line x1="4.54" y1="7.68" x2="4.66" y2="7.56" class="dt"/><line x1="4.6" y1="7.16" x2="4.6" y2="7.7" class="de"/><text x="4.33" y="7.55" class="td" font-size="0.15" text-anchor="middle">0,54</text><line x1="4.6" y1="7.62" x2="6.9" y2="7.62" class="dl"/><line x1="4.54" y1="7.68" x2="4.66" y2="7.56" class="dt"/><line x1="4.6" y1="7.16" x2="4.6" y2="7.7" class="de"/><line x1="6.84" y1="7.68" x2="6.96" y2="7.56" class="dt"/><line x1="6.9" y1="7.16" x2="6.9" y2="7.7" class="de"/><text x="5.75" y="7.55" class="td" font-size="0.15" text-anchor="middle">2,30</text><line x1="6.9" y1="7.62" x2="8.27" y2="7.62" class="dl"/><line x1="6.84" y1="7.68" x2="6.96" y2="7.56" class="dt"/><line x1="6.9" y1="7.16" x2="6.9" y2="7.7" class="de"/><line x1="8.21" y1="7.68" x2="8.33" y2="7.56" class="dt"/><line x1="8.27" y1="7.16" x2="8.27" y2="7.7" class="de"/><text x="7.585" y="7.55" class="td" font-size="0.15" text-anchor="middle">1,26</text><line x1="0" y1="7.98" x2="8.27" y2="7.98" class="dl"/><line x1="-0.06" y1="8.04" x2="0.06" y2="7.92" class="dt"/><line x1="8.21" y1="8.04" x2="8.33" y2="7.92" class="dt"/><text x="4.135" y="7.91" class="td" font-size="0.15" text-anchor="middle">8,26</text><line x1="4.06" y1="5.08" x2="6.77" y2="5.08" class="dl"/><line x1="4" y1="5.14" x2="4.12" y2="5.02" class="dt"/><line x1="6.71" y1="5.14" x2="6.83" y2="5.02" class="dt"/><text x="5.415" y="5.01" class="td" font-size="0.15" text-anchor="middle">2,71</text><line x1="6.77" y1="5.08" x2="8.17" y2="5.08" class="dl"/><line x1="6.71" y1="5.14" x2="6.83" y2="5.02" class="dt"/><line x1="8.11" y1="5.14" x2="8.23" y2="5.02" class="dt"/><text x="7.47" y="5.01" class="td" font-size="0.15" text-anchor="middle">1,40</text><line x1="-0.45" y1="0.77" x2="-0.45" y2="2.06" class="dl"/><line x1="-0.51" y1="0.83" x2="-0.39" y2="0.71" class="dt"/><line x1="0" y1="0.77" x2="-0.53" y2="0.77" class="de"/><line x1="-0.51" y1="2.12" x2="-0.39" y2="2" class="dt"/><line x1="0" y1="2.06" x2="-0.53" y2="2.06" class="de"/><text x="-0.52" y="1.415" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 -0.52 1.415)">1,29</text><line x1="-0.45" y1="2.16" x2="-0.45" y2="7.06" class="dl"/><line x1="-0.51" y1="2.22" x2="-0.39" y2="2.1" class="dt"/><line x1="0" y1="2.16" x2="-0.53" y2="2.16" class="de"/><line x1="-0.51" y1="7.12" x2="-0.39" y2="7" class="dt"/><line x1="0" y1="7.06" x2="-0.53" y2="7.06" class="de"/><text x="-0.52" y="4.61" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 -0.52 4.61)">4,90</text><line x1="-0.85" y1="0.77" x2="-0.85" y2="7.16" class="dl"/><line x1="-0.91" y1="0.83" x2="-0.79" y2="0.71" class="dt"/><line x1="-0.91" y1="7.22" x2="-0.79" y2="7.1" class="dt"/><text x="-0.92" y="3.965" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 -0.92 3.965)">6,39</text><line x1="8.55" y1="0.1" x2="8.55" y2="5.34" class="dl"/><line x1="8.49" y1="0.16" x2="8.61" y2="0.04" class="dt"/><line x1="8.27" y1="0.1" x2="8.63" y2="0.1" class="de"/><line x1="8.49" y1="5.4" x2="8.61" y2="5.28" class="dt"/><line x1="8.27" y1="5.34" x2="8.63" y2="5.34" class="de"/><text x="8.48" y="2.72" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 8.48 2.72)">5,24</text><line x1="8.55" y1="5.44" x2="8.55" y2="7.06" class="dl"/><line x1="8.49" y1="5.5" x2="8.61" y2="5.38" class="dt"/><line x1="8.27" y1="5.44" x2="8.63" y2="5.44" class="de"/><line x1="8.49" y1="7.12" x2="8.61" y2="7" class="dt"/><line x1="8.27" y1="7.06" x2="8.63" y2="7.06" class="de"/><text x="8.48" y="6.25" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 8.48 6.25)">1,62</text><line x1="8.95" y1="0" x2="8.95" y2="7.16" class="dl"/><line x1="8.89" y1="0.06" x2="9.01" y2="-0.06" class="dt"/><line x1="8.89" y1="7.22" x2="9.01" y2="7.1" class="dt"/><text x="8.88" y="3.58" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 8.88 3.58)">7,16</text><line x1="4.4" y1="2.96" x2="4.4" y2="4.85" class="dl"/><line x1="4.34" y1="3.02" x2="4.46" y2="2.9" class="dt"/><line x1="4.34" y1="4.91" x2="4.46" y2="4.79" class="dt"/><text x="4.33" y="3.905" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 4.33 3.905)">1,89</text><line x1="4.4" y1="0.92" x2="4.4" y2="2.05" class="dl"/><line x1="4.34" y1="0.98" x2="4.46" y2="0.86" class="dt"/><line x1="4.34" y1="2.11" x2="4.46" y2="1.99" class="dt"/><text x="4.33" y="1.485" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 4.33 1.485)">1,13</text></svg></div>
+      <div>
+        <h3>Ouvertures relevées</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Rep.</th><th>Désignation</th><th class="n">L</th><th class="n">H</th></tr></thead>
+            <tbody>
+              <tr><td>F1</td><td>Fenêtre 2 vantaux, allège 1,00</td><td class="n">2,41</td><td class="n">1,10</td></tr>
+              <tr><td>B1</td><td>Baie balcon, garde-corps h 1,00</td><td class="n">2,30</td><td class="n">2,20</td></tr>
+              <tr><td>PF</td><td>Double porte-fenêtre, 4 panneaux</td><td class="n">2,71</td><td class="n">2,15</td></tr>
+              <tr><td>P1</td><td>Porte cuisine / balcon</td><td class="n">1,06</td><td class="n">2,05</td></tr>
+              <tr><td>PP</td><td>Passe-plat cuisine / séjour</td><td class="n">1,89</td><td class="n">0,95</td></tr>
+              <tr><td>P2</td><td>Porte cuisine / entrée</td><td class="n">0,66</td><td class="n">2,05</td></tr>
+              <tr><td>P3</td><td>Passage entrée / séjour</td><td class="n">1,13</td><td class="n">2,05</td></tr>
+              <tr><td>N1</td><td>Niche, prof. ≈ 0,27, 3 tablettes</td><td class="n">1,07</td><td class="n">1,16</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="legend">
+          <span><i class="lg-w"></i>Mur coupé</span>
+          <span><i class="lg-g"></i>Menuiserie vitrée</span>
+          <span><i class="lg-x"></i>Épaisseur à confirmer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mod wrap" id="projet">
+    <div class="mod-head">
+      <div class="plate">P09<small>DÉMOLITION · CONSTRUCTION</small></div>
+      <div>
+        <h2>Ouvrir sans tout casser</h2>
+        <p>Le projet tient en peu d'interventions : une cloison de 10 cm et une porte déposées, une tête de cloison prolongée de 30 cm. Basculez entre l'existant, les travaux et le projet fini.</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="panel">
+        <div class="toggle" role="group" aria-label="Phase affichée">
+          <button type="button" id="ph-old" data-s="old" aria-pressed="false">Existant</button>
+          <button type="button" id="ph-demo" data-s="demo" aria-pressed="true">Travaux</button>
+          <button type="button" id="ph-new" data-s="new" aria-pressed="false">Projet</button>
+        </div>
+        <svg class="plan phases" data-state="demo" viewBox="-.7 -.7 10.1 8.9" role="img" aria-label="Plan existant, démolition et projet"><defs><pattern id="hx" patternUnits="userSpaceOnUse" width=".09" height=".09" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2=".09" class="hatch"/></pattern></defs><line x1="0.1" y1="0.77" x2="3.96" y2="0.77" class="thin dash"/><rect x="3.96" y="0" width="4.31" height="0.1" class="w" /><rect x="8.17" y="0" width="0.1" height="7.16" class="w" /><rect x="0" y="7.06" width="0.98" height="0.1" class="w" /><rect x="3.39" y="7.06" width="1.21" height="0.1" class="w" /><rect x="6.9" y="7.06" width="1.37" height="0.1" class="w" /><rect x="0" y="0.77" width="0.1" height="6.39" class="w" /><rect x="3.96" y="0" width="0.1" height="0.92" class="w" /><rect x="3.96" y="2.05" width="0.1" height="0.11" class="w" /><rect x="3.96" y="5.34" width="0.1" height="0.57" class="w" /><rect x="3.96" y="6.97" width="0.1" height="0.09" class="w" /><rect x="0.1" y="2.06" width="3.1" height="0.1" class="w" /><rect x="6.77" y="5.34" width="1.4" height="0.1" class="w" /><rect x="4.06" y="0.55" width="0.32" height="0.32" class="w" /><rect x="6.83" y="-0.17" width="1.07" height="0.27" class="niche" /><line x1="0.98" y1="7.09" x2="3.39" y2="7.09" class="gl"/><line x1="0.98" y1="7.13" x2="3.39" y2="7.13" class="gl"/><line x1="0.98" y1="7.06" x2="0.98" y2="7.16" class="wo"/><line x1="3.39" y1="7.06" x2="3.39" y2="7.16" class="wo"/><line x1="4.6" y1="7.09" x2="6.9" y2="7.09" class="gl"/><line x1="4.6" y1="7.13" x2="6.9" y2="7.13" class="gl"/><line x1="4.6" y1="7.06" x2="4.6" y2="7.16" class="wo"/><line x1="6.9" y1="7.06" x2="6.9" y2="7.16" class="wo"/><line x1="4.06" y1="5.37" x2="6.77" y2="5.37" class="gl"/><line x1="4.06" y1="5.41" x2="6.77" y2="5.41" class="gl"/><line x1="4.06" y1="5.34" x2="4.06" y2="5.44" class="wo"/><line x1="6.77" y1="5.34" x2="6.77" y2="5.44" class="wo"/><line x1="4.6" y1="7.2" x2="6.9" y2="7.2" class="thin dash"/><rect x="3.1" y="2.16" width="0.1" height="0.3" class="w" /><g class="ly-old"><rect x="3.96" y="2.16" width="0.1" height="0.8" class="w" /><rect x="3.96" y="4.85" width="0.1" height="0.49" class="w" /><rect x="3.96" y="2.96" width="0.1" height="1.89" class="allege" /><line x1="3.86" y1="2.16" x2="3.86" y2="2.82" class="wo"/><path d="M3.2 2.16 A.66 .66 0 0 0 3.86 2.82" class="thin dash"/></g><g class="ly-demo"><rect x="3.96" y="2.16" width="0.1" height="0.8" class="demo" /><rect x="3.96" y="4.85" width="0.1" height="0.49" class="demo" /><rect x="3.96" y="2.96" width="0.1" height="1.89" class="demo" /><rect x="3.2" y="2.06" width="0.76" height="0.1" class="demo" /></g><g class="ly-new"><rect x="3.1" y="2.46" width="0.1" height="0.32" class="created" /></g><g class="ly-furn"><g class="furn-g"><rect x="0.1" y="2.16" width="0.65" height="0.6" class="fu" /><rect x="0.75" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="0.75" y1="2.16" x2="1.337" y2="2.78" class="thin"/><line x1="1.337" y1="2.16" x2="0.75" y2="2.78" class="thin"/><rect x="1.337" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.337" y1="2.16" x2="1.925" y2="2.78" class="thin"/><line x1="1.925" y1="2.16" x2="1.337" y2="2.78" class="thin"/><rect x="1.925" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.925" y1="2.16" x2="2.513" y2="2.78" class="thin"/><line x1="2.513" y1="2.16" x2="1.925" y2="2.78" class="thin"/><rect x="2.513" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="2.513" y1="2.16" x2="3.1" y2="2.78" class="thin"/><line x1="3.1" y1="2.16" x2="2.513" y2="2.78" class="thin"/><rect x="0.1" y="2.76" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="3.36" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="3.96" width="0.65" height="1.2" class="fu" /><circle cx="0.3" cy="4.31" r="0.09" class="thin"/><circle cx="0.56" cy="4.31" r="0.09" class="thin"/><circle cx="0.3" cy="4.81" r="0.09" class="thin"/><circle cx="0.56" cy="4.81" r="0.09" class="thin"/><rect x="0.1" y="5.16" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="5.76" width="0.65" height="0.6" class="fu" /><rect x="0.2" y="5.86" width="0.45" height="0.4" class="thin" rx=".05"/><rect x="0.1" y="6.36" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="4.11" width="0.48" height="0.9" class="thin dash" /><rect x="0.1" y="5.16" width="0.36" height="1.2" class="thin dash" /><rect x="1.86" y="3.72" width="1" height="2.4" class="fu" /><rect x="1.4" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><g transform="rotate(-8 6.6 6.0)"><rect x="5.74" y="5.68" width="1.72" height="0.72" class="fu" /></g></g></g><g class="ly-num"><g class="tag hot"><circle cx="4.45" cy="3.7" r="0.2" class="tc"/><text x="4.45" y="3.76" class="tn" font-size="0.17" text-anchor="middle">1</text></g><g class="tag hot"><circle cx="3.58" cy="1.8" r="0.2" class="tc"/><text x="3.58" y="1.86" class="tn" font-size="0.17" text-anchor="middle">2</text></g><g class="tag hot"><circle cx="2.8" cy="2.95" r="0.2" class="tc"/><text x="2.8" y="3.01" class="tn" font-size="0.17" text-anchor="middle">3</text></g><g class="tag hot"><circle cx="1.05" cy="6.55" r="0.2" class="tc"/><text x="1.05" y="6.61" class="tn" font-size="0.17" text-anchor="middle">4</text></g><g class="tag hot"><circle cx="5.5" cy="4.3" r="0.2" class="tc"/><text x="5.5" y="4.36" class="tn" font-size="0.17" text-anchor="middle">5</text></g><g class="tag hot"><circle cx="7.55" cy="1.1" r="0.2" class="tc"/><text x="7.55" y="1.16" class="tn" font-size="0.17" text-anchor="middle">6</text></g></g><g class="ly-labels"><text x="1.95" y="1.42" class="tr" font-size="0.22" text-anchor="middle" letter-spacing=".06">ENTRÉE</text><text x="6.12" y="2.75" class="tr" font-size="0.26" text-anchor="middle" letter-spacing=".06">SÉJOUR</text><text x="6.12" y="6.25" class="tr" font-size="0.22" text-anchor="middle" letter-spacing=".06">BALCON</text><g class="ly-kit"><text x="1.95" y="4.65" class="tr" font-size="0.26" text-anchor="middle" letter-spacing=".06">CUISINE</text></g></g><rect x="0" y="7.75" width="1" height="0.07" class="sb" /><text x="0" y="8.03" class="ta" font-size="0.13" text-anchor="middle">0</text><rect x="1" y="7.75" width="1" height="0.07" class="sb2" /><text x="1" y="8.03" class="ta" font-size="0.13" text-anchor="middle">1</text><rect x="2" y="7.75" width="1" height="0.07" class="sb" /><text x="2" y="8.03" class="ta" font-size="0.13" text-anchor="middle">2</text><rect x="3" y="7.75" width="1" height="0.07" class="sb2" /><text x="3" y="8.03" class="ta" font-size="0.13" text-anchor="middle">3</text><text x="4" y="8.03" class="ta" font-size="0.13" text-anchor="middle">4 m</text><g class="north"><line x1="9.072" y1="7.674" x2="8.828" y2="7.126" class="nl"/><path d="M8.828 7.126 l-0.009 0.201 l0.164 -0.073z" class="na"/><text x="8.785" y="7.1" class="tr" font-size="0.2" text-anchor="middle">N</text></g></svg>
+        <div class="legend">
+          <span><i class="lg-w"></i>Mur conservé</span>
+          <span><i class="lg-d"></i>Démoli</span>
+          <span><i class="lg-c"></i>Créé</span>
+        </div>
+      </div>
+      <div>
+        <h3>Ce qui change</h3>
+        <ol class="notes">
+          <li>Dépose de la cloison cuisine / séjour, passe-plat compris (≈ 2,9 m × h 2,50). Caractère non porteur vérifié avant travaux.</li>
+          <li>Dépose de la porte P2 et de son trumeau : passage libre de 0,76 m vers l'entrée, ou cloison vitrée (variantes P10 et P12).</li>
+          <li>Tête de cloison prolongée d'environ 0,30 m jusqu'au nu des colonnes, en plaques de plâtre sur ossature.</li>
+          <li>Cuisine réimplantée : linéaire bas sur tout le mur ouest, colonnes au nord, table de 2,40 m.</li>
+          <li>Même parquet chêne en cuisine et au séjour, lames posées dans l'autre sens ; raccords de sol et de plafond au droit des cloisons déposées.</li>
+          <li>Séjour : lambris supprimé, murs peints, mobilier à redéfinir.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="mod wrap" id="amenagement">
+    <div class="mod-head">
+      <div class="plate">P03<small>IMPLANTATION</small></div>
+      <div>
+        <h2>Une cuisine pensée autour de la table</h2>
+        <p>Toute la technique se range sur deux murs : quatre colonnes de 2,24 m au nord, un linéaire bas de 4,90 m à l'ouest. Le centre reste libre pour une table de ferme en chêne de 2,40 × 1,00, avec 0,94 m de dégagement à chaque bout.</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="panel"><svg class="plan" viewBox="-.9 1.15 6.3 6.55" role="img" aria-label="Plan d'implantation du mobilier de la cuisine"><defs><pattern id="hx" patternUnits="userSpaceOnUse" width=".09" height=".09" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2=".09" class="hatch"/></pattern></defs><line x1="0.1" y1="0.77" x2="3.96" y2="0.77" class="thin dash"/><rect x="3.96" y="0" width="4.31" height="0.1" class="w" /><rect x="8.17" y="0" width="0.1" height="7.16" class="w" /><rect x="0" y="7.06" width="0.98" height="0.1" class="w" /><rect x="3.39" y="7.06" width="1.21" height="0.1" class="w" /><rect x="6.9" y="7.06" width="1.37" height="0.1" class="w" /><rect x="0" y="0.77" width="0.1" height="6.39" class="w" /><rect x="3.96" y="0" width="0.1" height="0.92" class="w" /><rect x="3.96" y="2.05" width="0.1" height="0.11" class="w" /><rect x="3.96" y="5.34" width="0.1" height="0.57" class="w" /><rect x="3.96" y="6.97" width="0.1" height="0.09" class="w" /><rect x="0.1" y="2.06" width="3.1" height="0.1" class="w" /><rect x="6.77" y="5.34" width="1.4" height="0.1" class="w" /><rect x="4.06" y="0.55" width="0.32" height="0.32" class="w" /><line x1="0.98" y1="7.09" x2="3.39" y2="7.09" class="gl"/><line x1="0.98" y1="7.13" x2="3.39" y2="7.13" class="gl"/><line x1="0.98" y1="7.06" x2="0.98" y2="7.16" class="wo"/><line x1="3.39" y1="7.06" x2="3.39" y2="7.16" class="wo"/><line x1="4.6" y1="7.09" x2="6.9" y2="7.09" class="gl"/><line x1="4.6" y1="7.13" x2="6.9" y2="7.13" class="gl"/><line x1="4.6" y1="7.06" x2="4.6" y2="7.16" class="wo"/><line x1="6.9" y1="7.06" x2="6.9" y2="7.16" class="wo"/><line x1="4.06" y1="5.37" x2="6.77" y2="5.37" class="gl"/><line x1="4.06" y1="5.41" x2="6.77" y2="5.41" class="gl"/><line x1="4.06" y1="5.34" x2="4.06" y2="5.44" class="wo"/><line x1="6.77" y1="5.34" x2="6.77" y2="5.44" class="wo"/><line x1="4.6" y1="7.2" x2="6.9" y2="7.2" class="thin dash"/><rect x="3.1" y="2.16" width="0.1" height="0.3" class="w" /><rect x="3.1" y="2.46" width="0.1" height="0.32" class="created" /><g class="furn-g"><rect x="0.1" y="2.16" width="0.65" height="0.6" class="fu" /><text x="0.42" y="2.5" class="tn" font-size="0.12" text-anchor="middle">8g</text><rect x="0.75" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="0.75" y1="2.16" x2="1.337" y2="2.78" class="thin"/><line x1="1.337" y1="2.16" x2="0.75" y2="2.78" class="thin"/><g class="tag"><circle cx="1.044" cy="2.47" r="0.11" class="tc"/><text x="1.044" y="2.51" class="tn" font-size="0.12" text-anchor="middle">1</text></g><rect x="1.337" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.337" y1="2.16" x2="1.925" y2="2.78" class="thin"/><line x1="1.925" y1="2.16" x2="1.337" y2="2.78" class="thin"/><g class="tag"><circle cx="1.631" cy="2.47" r="0.11" class="tc"/><text x="1.631" y="2.51" class="tn" font-size="0.12" text-anchor="middle">4</text></g><rect x="1.925" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.925" y1="2.16" x2="2.513" y2="2.78" class="thin"/><line x1="2.513" y1="2.16" x2="1.925" y2="2.78" class="thin"/><g class="tag"><circle cx="2.219" cy="2.47" r="0.11" class="tc"/><text x="2.219" y="2.51" class="tn" font-size="0.12" text-anchor="middle">2</text></g><rect x="2.513" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="2.513" y1="2.16" x2="3.1" y2="2.78" class="thin"/><line x1="3.1" y1="2.16" x2="2.513" y2="2.78" class="thin"/><g class="tag"><circle cx="2.806" cy="2.47" r="0.11" class="tc"/><text x="2.806" y="2.51" class="tn" font-size="0.12" text-anchor="middle">3</text></g><rect x="0.1" y="2.76" width="0.65" height="0.6" class="fu" /><text x="0.42" y="3.1" class="tn" font-size="0.11" text-anchor="middle">8f</text><rect x="0.1" y="3.36" width="0.65" height="0.6" class="fu" /><text x="0.42" y="3.7" class="tn" font-size="0.11" text-anchor="middle">8e</text><rect x="0.1" y="3.96" width="0.65" height="1.2" class="fu" /><circle cx="0.3" cy="4.31" r="0.09" class="thin"/><circle cx="0.56" cy="4.31" r="0.09" class="thin"/><circle cx="0.3" cy="4.81" r="0.09" class="thin"/><circle cx="0.56" cy="4.81" r="0.09" class="thin"/><rect x="0.1" y="5.16" width="0.65" height="0.6" class="fu" /><text x="0.42" y="5.5" class="tn" font-size="0.11" text-anchor="middle">8c</text><rect x="0.1" y="5.76" width="0.65" height="0.6" class="fu" /><rect x="0.2" y="5.86" width="0.45" height="0.4" class="thin" rx=".05"/><text x="0.42" y="6.1" class="tn" font-size="0.11" text-anchor="middle">8b</text><rect x="0.1" y="6.36" width="0.65" height="0.6" class="fu" /><text x="0.42" y="6.7" class="tn" font-size="0.11" text-anchor="middle">8a</text><rect x="0.1" y="4.11" width="0.48" height="0.9" class="thin dash" /><rect x="0.1" y="5.16" width="0.36" height="1.2" class="thin dash" /><rect x="1.86" y="3.72" width="1" height="2.4" class="fu" /><g class="tag"><circle cx="2.36" cy="4.92" r="0.13" class="tc"/><text x="2.36" y="4.965" class="tn" font-size="0.13" text-anchor="middle">7</text></g><rect x="1.4" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><g transform="rotate(-8 6.6 6.0)"><rect x="5.74" y="5.68" width="1.72" height="0.72" class="fu" /></g></g><line x1="3.2" y1="2.11" x2="3.96" y2="2.11" class="thin dash"/><text x="1.95" y="1.6" class="tr" font-size="0.2" text-anchor="middle" letter-spacing=".06">ENTRÉE</text><text x="4.35" y="3.5" class="ta" font-size="0.14" text-anchor="start">SÉJOUR →</text><line x1="2.3" y1="2.78" x2="2.3" y2="3.72" class="dl"/><line x1="2.24" y1="2.84" x2="2.36" y2="2.72" class="dt"/><line x1="2.24" y1="3.78" x2="2.36" y2="3.66" class="dt"/><text x="2.23" y="3.25" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 2.23 3.25)">0,94</text><line x1="2.3" y1="6.12" x2="2.3" y2="7.06" class="dl"/><line x1="2.24" y1="6.18" x2="2.36" y2="6.06" class="dt"/><line x1="2.24" y1="7.12" x2="2.36" y2="7" class="dt"/><text x="2.23" y="6.59" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 2.23 6.59)">0,94</text><line x1="0.75" y1="3.62" x2="1.4" y2="3.62" class="dl"/><line x1="0.69" y1="3.68" x2="0.81" y2="3.56" class="dt"/><line x1="1.34" y1="3.68" x2="1.46" y2="3.56" class="dt"/><text x="1.075" y="3.55" class="td" font-size="0.15" text-anchor="middle">0,65</text><line x1="-0.45" y1="2.16" x2="-0.45" y2="7.06" class="dl"/><line x1="-0.51" y1="2.22" x2="-0.39" y2="2.1" class="dt"/><line x1="0" y1="2.16" x2="-0.53" y2="2.16" class="de"/><line x1="-0.51" y1="7.12" x2="-0.39" y2="7" class="dt"/><line x1="0" y1="7.06" x2="-0.53" y2="7.06" class="de"/><text x="-0.52" y="4.61" class="td" font-size="0.15" text-anchor="middle" transform="rotate(-90 -0.52 4.61)">4,90</text><text x="1.95" y="7.55" class="ta" font-size="0.13" text-anchor="middle">1:50 · cotes en mètres</text></svg></div>
+      <div>
+        <h3>Mobilier et équipements</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>N°</th><th>Désignation</th><th class="n">L × P</th><th class="n">H</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Colonne réfrigérateur</td><td class="n">0,65 × 0,62</td><td class="n">2,24</td></tr>
+              <tr><td>2</td><td>Colonne garde-manger</td><td class="n">0,65 × 0,62</td><td class="n">2,24</td></tr>
+              <tr><td>3</td><td>Colonne rangement</td><td class="n">0,65 × 0,62</td><td class="n">2,24</td></tr>
+              <tr><td>4</td><td>Colonne four + micro-ondes</td><td class="n">0,67 × 0,62</td><td class="n">2,24</td></tr>
+              <tr><td>7</td><td>Table de ferme chêne</td><td class="n">2,40 × 1,00</td><td class="n">0,76</td></tr>
+              <tr><td>8a</td><td>Lave-vaisselle intégré 60</td><td class="n">0,60 × 0,60</td><td class="n">0,91</td></tr>
+              <tr><td>8b</td><td>Évier timbre 60</td><td class="n">0,60 × 0,60</td><td class="n">0,91</td></tr>
+              <tr><td>8c</td><td>Poubelle coulissante 60</td><td class="n">0,60 × 0,60</td><td class="n">0,91</td></tr>
+              <tr><td>8d</td><td>Casserolier 120, plaque + hotte</td><td class="n">1,20 × 0,60</td><td class="n">0,91</td></tr>
+              <tr><td>8e</td><td>Porte 60</td><td class="n">0,60 × 0,60</td><td class="n">0,91</td></tr>
+              <tr><td>8f</td><td>Tiroirs 60</td><td class="n">0,60 × 0,60</td><td class="n">0,91</td></tr>
+              <tr><td>8g</td><td>Fileur + angle</td><td class="n">0,75 × 0,60</td><td class="n">0,91</td></tr>
+              <tr><td>9</td><td>Chaise assise tressée × 8</td><td class="n">0,54 × 0,45</td><td class="n">0,85</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="legend">
+          <span><i class="lg-w" style="opacity:.25"></i>Meuble au sol</span>
+          <span><i class="lg-x" style="border-color:var(--line)"></i>Élément en hauteur (hotte, meubles hauts)</span>
+        </div>
+      </div>
+    </div>
+    <figure class="fullbleed">
+      <div class="shot"><img src="apercu-3d-cuisine.jpg" width="1465" height="742" alt="Aperçu 3D de la cuisine ouverte : linéaire bois sur le mur, hotte inclinée noire, table de ferme avec chaises claires et suspensions opalines"></div>
+      <figcaption>Aperçu de travail Blender, non contractuel. Colonnes et linéaire en bois, hotte inclinée, trois suspensions au-dessus de la table.</figcaption>
+    </figure>
+  </section>
+
+  <section class="mod wrap" id="electricite">
+    <div class="mod-head">
+      <div class="plate">P04<small>ÉLECTRICITÉ · ÉCLAIRAGE</small></div>
+      <div>
+        <h2>La lumière suit la table</h2>
+        <p>Trois suspensions en laiton et verre opalin au-dessus de la table, un plafonnier vasque côté plan de travail. Deux doubles commandes, une à chaque accès, allument l'ensemble. Implantation selon la NF C 15-100.</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="panel"><svg class="plan" viewBox="-.7 1.5 6.05 6.15" role="img" aria-label="Plan électricité et éclairage de la cuisine"><defs><pattern id="hx" patternUnits="userSpaceOnUse" width=".09" height=".09" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2=".09" class="hatch"/></pattern></defs><rect x="3.96" y="0" width="4.31" height="0.1" class="w" /><rect x="8.17" y="0" width="0.1" height="7.16" class="w" /><rect x="0" y="7.06" width="0.98" height="0.1" class="w" /><rect x="3.39" y="7.06" width="1.21" height="0.1" class="w" /><rect x="6.9" y="7.06" width="1.37" height="0.1" class="w" /><rect x="0" y="0.77" width="0.1" height="6.39" class="w" /><rect x="3.96" y="0" width="0.1" height="0.92" class="w" /><rect x="3.96" y="2.05" width="0.1" height="0.11" class="w" /><rect x="3.96" y="5.34" width="0.1" height="0.57" class="w" /><rect x="3.96" y="6.97" width="0.1" height="0.09" class="w" /><rect x="0.1" y="2.06" width="3.1" height="0.1" class="w" /><rect x="6.77" y="5.34" width="1.4" height="0.1" class="w" /><rect x="4.06" y="0.55" width="0.32" height="0.32" class="w" /><line x1="0.98" y1="7.09" x2="3.39" y2="7.09" class="gl"/><line x1="0.98" y1="7.13" x2="3.39" y2="7.13" class="gl"/><line x1="0.98" y1="7.06" x2="0.98" y2="7.16" class="wo"/><line x1="3.39" y1="7.06" x2="3.39" y2="7.16" class="wo"/><line x1="4.6" y1="7.09" x2="6.9" y2="7.09" class="gl"/><line x1="4.6" y1="7.13" x2="6.9" y2="7.13" class="gl"/><line x1="4.6" y1="7.06" x2="4.6" y2="7.16" class="wo"/><line x1="6.9" y1="7.06" x2="6.9" y2="7.16" class="wo"/><line x1="4.06" y1="5.37" x2="6.77" y2="5.37" class="gl"/><line x1="4.06" y1="5.41" x2="6.77" y2="5.41" class="gl"/><line x1="4.06" y1="5.34" x2="4.06" y2="5.44" class="wo"/><line x1="6.77" y1="5.34" x2="6.77" y2="5.44" class="wo"/><line x1="4.6" y1="7.2" x2="6.9" y2="7.2" class="thin dash"/><rect x="3.1" y="2.16" width="0.1" height="0.3" class="w" /><rect x="3.1" y="2.46" width="0.1" height="0.32" class="created" /><g class="dim-furn"><g class="furn-g"><rect x="0.1" y="2.16" width="0.65" height="0.6" class="fu" /><rect x="0.75" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="0.75" y1="2.16" x2="1.337" y2="2.78" class="thin"/><line x1="1.337" y1="2.16" x2="0.75" y2="2.78" class="thin"/><rect x="1.337" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.337" y1="2.16" x2="1.925" y2="2.78" class="thin"/><line x1="1.925" y1="2.16" x2="1.337" y2="2.78" class="thin"/><rect x="1.925" y="2.16" width="0.588" height="0.62" class="fu" /><line x1="1.925" y1="2.16" x2="2.513" y2="2.78" class="thin"/><line x1="2.513" y1="2.16" x2="1.925" y2="2.78" class="thin"/><rect x="2.513" y="2.16" width="0.587" height="0.62" class="fu" /><line x1="2.513" y1="2.16" x2="3.1" y2="2.78" class="thin"/><line x1="3.1" y1="2.16" x2="2.513" y2="2.78" class="thin"/><rect x="0.1" y="2.76" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="3.36" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="3.96" width="0.65" height="1.2" class="fu" /><circle cx="0.3" cy="4.31" r="0.09" class="thin"/><circle cx="0.56" cy="4.31" r="0.09" class="thin"/><circle cx="0.3" cy="4.81" r="0.09" class="thin"/><circle cx="0.56" cy="4.81" r="0.09" class="thin"/><rect x="0.1" y="5.16" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="5.76" width="0.65" height="0.6" class="fu" /><rect x="0.2" y="5.86" width="0.45" height="0.4" class="thin" rx=".05"/><rect x="0.1" y="6.36" width="0.65" height="0.6" class="fu" /><rect x="0.1" y="4.11" width="0.48" height="0.9" class="thin dash" /><rect x="0.1" y="5.16" width="0.36" height="1.2" class="thin dash" /><rect x="1.86" y="3.72" width="1" height="2.4" class="fu" /><rect x="1.4" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="3.86" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="4.45" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.04" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="1.4" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><rect x="2.9" y="5.63" width="0.42" height="0.5" class="fu" rx=".06"/><g transform="rotate(-8 6.6 6.0)"><rect x="5.74" y="5.68" width="1.72" height="0.72" class="fu" /></g></g></g><path d="M3.85 2.3 Q2.422 3.204 1.4 4.55" class="wire"/><path d="M3.85 5.7 Q2.498 5.397 1.4 4.55" class="wire"/><path d="M3.85 2.3 Q2.871 3.037 2.36 4.15" class="wire"/><path d="M3.85 5.7 Q2.889 5.133 2.36 4.15" class="wire"/><path d="M3.85 2.3 Q2.844 3.462 2.36 4.92" class="wire"/><path d="M3.85 5.7 Q2.966 5.576 2.36 4.92" class="wire"/><path d="M3.85 2.3 Q2.83 3.874 2.36 5.69" class="wire"/><path d="M3.85 5.7 Q3.103 5.995 2.36 5.69" class="wire"/><circle cx="1.4" cy="4.55" r="0.14" class="el"/><line x1="1.302" y1="4.452" x2="1.498" y2="4.648" class="el"/><line x1="1.302" y1="4.648" x2="1.498" y2="4.452" class="el"/><circle cx="1.4" cy="4.55" r="0.2" class="el"/><circle cx="2.36" cy="4.15" r="0.14" class="el"/><line x1="2.262" y1="4.052" x2="2.458" y2="4.248" class="el"/><line x1="2.262" y1="4.248" x2="2.458" y2="4.052" class="el"/><circle cx="2.36" cy="4.92" r="0.14" class="el"/><line x1="2.262" y1="4.822" x2="2.458" y2="5.018" class="el"/><line x1="2.262" y1="5.018" x2="2.458" y2="4.822" class="el"/><circle cx="2.36" cy="5.69" r="0.14" class="el"/><line x1="2.262" y1="5.592" x2="2.458" y2="5.788" class="el"/><line x1="2.262" y1="5.788" x2="2.458" y2="5.592" class="el"/><circle cx="3.85" cy="2.3" r="0.07" class="el"/><line x1="3.9" y1="2.25" x2="4.05" y2="2.1" class="el"/><circle cx="3.85" cy="2.3" r="0.03" class="eld"/><circle cx="3.85" cy="5.7" r="0.07" class="el"/><line x1="3.9" y1="5.65" x2="4.05" y2="5.5" class="el"/><circle cx="3.85" cy="5.7" r="0.03" class="eld"/><circle cx="0.3" cy="2.27" r="0.07" class="el"/><circle cx="0.47" cy="2.27" r="0.07" class="el"/><text x="0.3" y="2.51" class="te" font-size="0.11" text-anchor="middle">h1,10</text><circle cx="1.04" cy="2.27" r="0.07" class="el"/><text x="1.04" y="2.51" class="te" font-size="0.11" text-anchor="middle">16</text><circle cx="1.62" cy="2.27" r="0.07" class="el"/><circle cx="1.79" cy="2.27" r="0.07" class="el"/><text x="1.62" y="2.51" class="te" font-size="0.11" text-anchor="middle">16+20</text><circle cx="0.18" cy="4.2" r="0.07" class="el"/><text x="0.36" y="4.25" class="te" font-size="0.11" text-anchor="start">32 A</text><circle cx="0.18" cy="3.98" r="0.07" class="el"/><text x="0.36" y="4.03" class="te" font-size="0.11" text-anchor="start">hotte</text><circle cx="0.18" cy="6.7" r="0.07" class="el"/><text x="0.36" y="6.75" class="te" font-size="0.11" text-anchor="start">20 A</text><circle cx="3.85" cy="6.05" r="0.07" class="el"/><text x="3.68" y="6.1" class="te" font-size="0.11" text-anchor="end">table</text><text x="3.68" y="2.34" class="te" font-size="0.11" text-anchor="end">cde</text><text x="3.68" y="5.62" class="te" font-size="0.11" text-anchor="end">cde</text><text x="1.4" y="4.86" class="te" font-size="0.11" text-anchor="middle">plafonnier</text><text x="1.95" y="1.75" class="tr" font-size="0.2" text-anchor="middle" letter-spacing=".06">ENTRÉE</text><text x="4.35" y="3.4" class="ta" font-size="0.14" text-anchor="start">SÉJOUR →</text></svg></div>
+      <div>
+        <h3>Points électriques</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Point</th><th class="n">Qté</th></tr></thead>
+            <tbody>
+              <tr><td style="color:inherit">PC 16 A double, plan de travail h 1,10</td><td class="n">1</td></tr>
+              <tr><td style="color:inherit">PC 16 A : frigo, micro-ondes, hotte, table</td><td class="n">4</td></tr>
+              <tr><td style="color:inherit">PC 20 A spécialisées : four, lave-vaisselle</td><td class="n">2</td></tr>
+              <tr><td style="color:inherit">Sortie 32 A plaque de cuisson</td><td class="n">1</td></tr>
+              <tr><td style="color:inherit">Double commande éclairage h 1,10</td><td class="n">2</td></tr>
+              <tr><td style="color:inherit">Points lumineux au plafond (DCL)</td><td class="n">4</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 style="margin-top:32px">Circuits indicatifs</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tbody>
+              <tr><td>C1</td><td>Éclairage cuisine + entrée</td><td class="n">10 A · 1,5 mm²</td></tr>
+              <tr><td>C3</td><td>PC plan de travail (angle)</td><td class="n">20 A · 2,5 mm²</td></tr>
+              <tr><td>C4</td><td>PC frigo, hotte, micro-ondes, table</td><td class="n">20 A · 2,5 mm²</td></tr>
+              <tr><td>C5</td><td>Plaque de cuisson</td><td class="n">32 A · 6 mm²</td></tr>
+              <tr><td>C6</td><td>Four</td><td class="n">20 A · 2,5 mm²</td></tr>
+              <tr><td>C7</td><td>Lave-vaisselle</td><td class="n">20 A · 2,5 mm²</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-family:var(--mono);font-size:11.5px;color:var(--mute);margin:16px 0 0">LED 2700 K, IRC ≥ 90. Circuits à valider par l'électricien.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mod wrap" id="variantes">
+    <div class="mod-head">
+      <div class="plate">P10<small>P12 · VARIANTES</small></div>
+      <div>
+        <h2>Fermer le passage, garder la lumière</h2>
+        <p>Le projet de base laisse un passage libre de 0,76 m vers l'entrée. Deux propositions le referment par une cloison vitrée : l'entrée reste éclairée, la cuisine gagne un fond, et l'accès à l'entrée se fait par le séjour.</p>
+      </div>
+    </div>
+    <div class="variants">
+      <article>
+        <figure class="shot"><img src="rendu-verriere.jpg" width="1400" height="1050" alt="Rendu 3D : verrière d'atelier noire sur allège entre la cuisine et l'entrée"></figure>
+        <h4><span>VARIANTE 1 · P10</span>Verrière d'atelier sur allège</h4>
+        <div class="row">
+          <svg class="elev" viewBox="-.75 -2.85 2.95 3.25" role="img" aria-label="Élévation depuis le séjour"><defs><pattern id="hx" patternUnits="userSpaceOnUse" width=".09" height=".09" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2=".09" class="hatch"/></pattern></defs><rect x="-0.55" y="-2.5" width="0.55" height="2.5" class="elwall" /><rect x="0.76" y="-2.5" width="0.45" height="2.5" class="elwall" /><line x1="-0.7" y1="0" x2="1.4" y2="0" class="wo"/><line x1="-0.7" y1="-2.5" x2="1.4" y2="-2.5" class="wo"/><rect x="0" y="-1" width="0.76" height="1" class="allege" /><rect x="0" y="-2.5" width="0.76" height="0.4" class="allege" /><rect x="0" y="-2.1" width="0.76" height="1.1" class="frame" /><line x1="0.253" y1="-2.1" x2="0.253" y2="-1" class="mull"/><line x1="0.507" y1="-2.1" x2="0.507" y2="-1" class="mull"/><rect x="0.03" y="-2.07" width="0.7" height="1.04" class="glass" /><line x1="0.81" y1="0" x2="1.3" y2="0" class="thin dash"/><text x="1.33" y="0.04" class="ta" font-size="0.1" text-anchor="start">sol ±0,00</text><line x1="0.81" y1="-1" x2="1.3" y2="-1" class="thin dash"/><text x="1.33" y="-0.96" class="ta" font-size="0.1" text-anchor="start">allège +1,00</text><line x1="0.81" y1="-2.1" x2="1.3" y2="-2.1" class="thin dash"/><text x="1.33" y="-2.06" class="ta" font-size="0.1" text-anchor="start">haut verrière +2,10</text><line x1="0.81" y1="-2.5" x2="1.3" y2="-2.5" class="thin dash"/><text x="1.33" y="-2.46" class="ta" font-size="0.1" text-anchor="start">plafond +2,50</text><line x1="0" y1="0.22" x2="0.76" y2="0.22" class="dl"/><line x1="-0.06" y1="0.28" x2="0.06" y2="0.16" class="dt"/><line x1="0.7" y1="0.28" x2="0.82" y2="0.16" class="dt"/><text x="0.38" y="0.15" class="td" font-size="0.11" text-anchor="middle">0,76</text></svg>
+          <div>
+            <p>Allège en plaques de plâtre jusqu'à 1,00 m, verrière de 1,00 à 2,10 m, imposte au-dessus. Le caractère atelier répond à la hotte noire.</p>
+            <dl class="spec" style="margin-top:16px">
+              <div><dt>Profilés</dt><dd>acier thermolaqué noir 35 mm</dd></div>
+              <div><dt>Travées</dt><dd>3 verticales</dd></div>
+              <div><dt>Vitrage</dt><dd>feuilleté 44.2</dd></div>
+            </dl>
+          </div>
+        </div>
+      </article>
+      <article>
+        <figure class="shot"><img src="ambiance-chene-cannele.jpg" width="1400" height="788" alt="Image d'ambiance : cloison en chêne et verre cannelé à côté de colonnes de cuisine en bois et d'une table avec chaises cannées"></figure>
+        <h4><span>VARIANTE 2 · P12</span>Chêne et verre cannelé</h4>
+        <div class="row">
+          <svg class="elev" viewBox="-.75 -2.85 2.95 3.25" role="img" aria-label="Élévation depuis le séjour"><defs><pattern id="hx" patternUnits="userSpaceOnUse" width=".09" height=".09" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2=".09" class="hatch"/></pattern></defs><rect x="-0.55" y="-2.5" width="0.55" height="2.5" class="elwall" /><rect x="0.76" y="-2.5" width="0.45" height="2.5" class="elwall" /><line x1="-0.7" y1="0" x2="1.4" y2="0" class="wo"/><line x1="-0.7" y1="-2.5" x2="1.4" y2="-2.5" class="wo"/><rect x="0" y="-2.5" width="0.76" height="2.5" class="oak" /><rect x="0.05" y="-2.45" width="0.66" height="2.4" class="glass" /><line x1="0.08" y1="-2.44" x2="0.08" y2="-0.06" class="flute"/><line x1="0.115" y1="-2.44" x2="0.115" y2="-0.06" class="flute"/><line x1="0.15" y1="-2.44" x2="0.15" y2="-0.06" class="flute"/><line x1="0.185" y1="-2.44" x2="0.185" y2="-0.06" class="flute"/><line x1="0.22" y1="-2.44" x2="0.22" y2="-0.06" class="flute"/><line x1="0.255" y1="-2.44" x2="0.255" y2="-0.06" class="flute"/><line x1="0.29" y1="-2.44" x2="0.29" y2="-0.06" class="flute"/><line x1="0.325" y1="-2.44" x2="0.325" y2="-0.06" class="flute"/><line x1="0.36" y1="-2.44" x2="0.36" y2="-0.06" class="flute"/><line x1="0.395" y1="-2.44" x2="0.395" y2="-0.06" class="flute"/><line x1="0.43" y1="-2.44" x2="0.43" y2="-0.06" class="flute"/><line x1="0.465" y1="-2.44" x2="0.465" y2="-0.06" class="flute"/><line x1="0.5" y1="-2.44" x2="0.5" y2="-0.06" class="flute"/><line x1="0.535" y1="-2.44" x2="0.535" y2="-0.06" class="flute"/><line x1="0.57" y1="-2.44" x2="0.57" y2="-0.06" class="flute"/><line x1="0.605" y1="-2.44" x2="0.605" y2="-0.06" class="flute"/><line x1="0.64" y1="-2.44" x2="0.64" y2="-0.06" class="flute"/><line x1="0.675" y1="-2.44" x2="0.675" y2="-0.06" class="flute"/><line x1="0.81" y1="0" x2="1.3" y2="0" class="thin dash"/><text x="1.33" y="0.04" class="ta" font-size="0.1" text-anchor="start">sol ±0,00</text><line x1="0.81" y1="-2.5" x2="1.3" y2="-2.5" class="thin dash"/><text x="1.33" y="-2.46" class="ta" font-size="0.1" text-anchor="start">plafond +2,50</text><line x1="0" y1="0.22" x2="0.76" y2="0.22" class="dl"/><line x1="-0.06" y1="0.28" x2="0.06" y2="0.16" class="dt"/><line x1="0.7" y1="0.28" x2="0.82" y2="0.16" class="dt"/><text x="0.38" y="0.15" class="td" font-size="0.11" text-anchor="middle">0,76</text></svg>
+          <div>
+            <p>Cloison vitrée fixe toute hauteur, sans allège. Le verre cannelé laisse passer la lumière et floute la vue. L'ambiance est plus chaude que l'acier noir.</p>
+            <dl class="spec" style="margin-top:16px">
+              <div><dt>Cadre</dt><dd>chêne massif huilé 5 × 6 cm</dd></div>
+              <div><dt>Cannelures</dt><dd>verticales</dd></div>
+              <div><dt>Vitrage</dt><dd>cannelé feuilleté 44.2</dd></div>
+            </dl>
+          </div>
+        </div>
+        <figcaption>Image de référence d'ambiance, non contractuelle.</figcaption>
+      </article>
+    </div>
+  </section>
+
+  <section class="mod wrap" id="matieres">
+    <div class="mod-head">
+      <div class="plate">MAT<small>AMBIANCE</small></div>
+      <div>
+        <h2>Cottage méditerranéen</h2>
+        <p>Une palette courte, tirée des planches : bois clair au sol et sur la table, façades en bois chaud, verre opalin et laiton pour la lumière.</p>
+      </div>
+    </div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#c9a77c"></i><b>Parquet chêne</b><span>cuisine + séjour, lames croisées</span></div>
+      <div class="sw"><i style="background:#9a5b34"></i><b>Façades bois</b><span>colonnes et linéaire bas</span></div>
+      <div class="sw"><i style="background:#b88a5a"></i><b>Chêne huilé</b><span>table de ferme 240 × 100</span></div>
+      <div class="sw"><i style="background:#ece7dc"></i><b>Enduit à la chaux</b><span>murs, ton clair</span></div>
+      <div class="sw"><i style="background:#f4f1ea;box-shadow:inset 0 0 0 10px #c8a24a"></i><b>Opalin + laiton</b><span>suspensions et plafonnier</span></div>
+      <div class="sw"><i style="background:#1d1d1f"></i><b>Acier noir</b><span>hotte, verrière (variante 1)</span></div>
+    </div>
+  </section>
+
+  <section class="mod wrap" id="methode">
+    <div class="mod-head">
+      <div class="plate">AMO<small>LA MISSION</small></div>
+      <div>
+        <h2>Du scan au dossier artisans</h2>
+        <p>En assistance à maîtrise d'ouvrage, le dossier sert à décider avec les clients puis à consulter les artisans du collectif sur une base commune.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div><b>01</b><h5>Relever</h5><p>Scan Polycam et scan 3D, plan coté de l'existant.</p></div>
+      <div><b>02</b><h5>Dessiner</h5><p>Démolition, implantation, électricité, au 1:50 et au 1:25.</p></div>
+      <div><b>03</b><h5>Montrer</h5><p>Aperçus 3D et variantes pour choisir avant de chiffrer.</p></div>
+      <div><b>04</b><h5>Consulter</h5><p>Un même dossier pour le maçon, le plaquiste, l'électricien et le cuisiniste.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="end">
+  <div class="wrap">
+    <div>
+      <h2>Un projet de rénovation dans le 66 ?</h2>
+      <p>Relevé, plans et coordination des artisans du collectif, sans intermédiaire.</p>
+    </div>
+    <div class="cta">
+      <a class="btn fill" href="../../index.html#contact">Décrire mon projet</a>
+      <a class="btn" href="https://wa.me/33679728835" target="_blank" rel="noopener">WhatsApp 06 79 72 88 35</a>
+    </div>
+    <div class="fine">
+      <span>BâtiCollectif 66 · Perpignan</span>
+      <span>Documents d'étude, pas d'exécution. Cotes à confirmer sur place.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var svg=document.querySelector('svg.phases');
+  var btns=document.querySelectorAll('.toggle button');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      svg.setAttribute('data-state',b.dataset.s);
+      btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    });
+  });
+})();
+</script>
+</body>
+</html>
